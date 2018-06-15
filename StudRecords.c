@@ -93,7 +93,10 @@ void insertLast(studList *, student){
 /************************ POPULATING THE LIST *******************************
 *						DIRE SAD KA MAG READ FILE							*
 *			BUT IF YOU WANT TO SEPERATE IT AND MAKE ANOTHER FUNCTION 		*
-*					FOR READ FILE, PWEDE RAKA MAGHIMO 						*
+*			FOR READ FILE, PWEDE RAKA MAGHIMO 								*
+*			DIRE SAD KA MAG COMPUTE SA AVERAGE BUT IF YOU WANT IT SEPERATED *
+*			AND E CALL LANG NIMO, YOU CAN DO SO. THEN YOU CALL 				*
+*			INSERTSORTED() HERE PUD.										*
 *****************************************************************************/
 void populateList(studList *L){
 	
