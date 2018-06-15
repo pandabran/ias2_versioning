@@ -29,7 +29,7 @@ typedef struct{
 	subject subj[15];
 	float genAve;
 }stud;
-
+ 
 typedef struct node{
 	stud studRecord;
 	struct node* next;
@@ -88,6 +88,19 @@ void insertSortedByLastName(studList *, name){
 ****************************************************************************/
 void insertLast(studList *, student){
 	
+	studList *trav, temp;
+	
+	temp = (studList)malloc(sizeof(struct node));
+	
+	if(temp != NULL){
+		for(trav = L; *trav != NULL; trav = &(*trav)->next);
+		temp->studRecord = studRecord;
+		
+		temp->next = *trav;
+		*trav = temp;
+	}else{
+		printf("Dynamic Allocation failed!\n");
+	}
 }
 
 /************************ POPULATING THE LIST *******************************
