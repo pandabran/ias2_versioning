@@ -73,7 +73,11 @@ void populateListLastName(studList *L){
 *																		   *
 ****************************************************************************/
 void displayList(studList L){
-	
+	printf("\nID # First Name\tLast Name\t MUSIC\t ARTS\t PE\t HOME ECONOMICS\tFINAL GRADE\n\n");
+	for(; L != NULL; L = L->next){
+		printf("%d   %-5s\t   %s \t%.1f\t%.1f\t%.1f\t%.1f\t%.2f\n", L->person.id, L->person.fname, L->person.lname, L->person.q1, L->person.q2, L->person.q3, L->person.q4, L->person.average);
+	}
+		printf("\n--------NOTHING FOLLOWS---------\n");
 }
 
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
@@ -117,7 +121,15 @@ void populateList(studList *L){
 
 /*********************** DELETE ALL DATA ************************************/
 void deleteAll(studList *L){
+	studList temp;
 	
+	while(*L != NULL){
+		temp = *L;
+		*L = temp->next;
+		free(temp);
+	}
+	printf("Successfully deleted all records in the list\n");
+	system("PAUSE");
 }
 
 
