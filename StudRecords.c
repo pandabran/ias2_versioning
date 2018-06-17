@@ -152,7 +152,7 @@ void populateList(studList *L)
 			
 			calculateGeneralAverage(&stud);
 			// add student to the list through insertSortedByLastName
-			insertLast(L, stud);
+			insertSortedByLastName(L, stud);
 		}
 		// close the file pointers
 		fclose(fp_firstname);
@@ -186,6 +186,22 @@ void displayList(studList L)
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
 void insertSortedByLastName(studList *L, studRecord stud)
 {
+	studList *trav, temp;
+	
+	temp = (studList)malloc(sizeof(struct node));
+	
+	if(temp != NULL){
+		for(trav = L; *trav != NULL && strcmp((*trav)->stud.studName.lName, stud.studName.lName) < 0; trav = &(*trav)->next){}
+		
+		temp->stud = stud;
+		
+		temp->next = *trav;
+		*trav = temp;
+		
+		
+	}else{
+		printf("Dynamic Allocation failed!\n");
+	}
 	
 }
 
