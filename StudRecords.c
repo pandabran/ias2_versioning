@@ -38,13 +38,13 @@ typedef struct{
 typedef struct node{
 	studRecord stud;
 	struct node* next;
-}studList*;
+}*studList;
 
 void initializeList(studList *);
 void populateList(studList *);
 void displayList(studList);
 void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
-void insertLast(studList *, student);
+void insertLast(studList *, studRecord);
 void deleteAll(studList *);
 void calculateActivityAverage(subject *);
 void calculateGeneralAverage(studList *, subject);
@@ -102,25 +102,25 @@ void populateList(studList *L)
 			strcpy(stud.subj[stud.numSubjects].subjName, "Arts");
 			fscanf(fp_arts1, "%d", stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_arts2, "%d", stud.subj[stud.numSubjects].act[1]);
-			stud.nunSubjects++;
+			stud.numSubjects++;
 			
 			// add the grades of the student for the second subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "H.E.");
 			fscanf(fp_he1, "%d", stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_he2, "%d", stud.subj[stud.numSubjects].act[1]);
-			stud.nunSubjects++;
+			stud.numSubjects++;
 			
 			// add the grades of the student for the third subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "Music");
 			fscanf(fp_music1, "%d", stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_music2, "%d", stud.subj[stud.numSubjects].act[1]);
-			stud.nunSubjects++;
+			stud.numSubjects++;
 			
 			// add the grades of the student for the fourth subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "P.E.");
 			fscanf(fp_pe1, "%d", stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_pe2, "%d", stud.subj[stud.numSubjects].act[1]);
-			stud.nunSubjects++;
+			stud.numSubjects++;
 			
 			// add student to the list through insertSortedByLastName
 			insertSortedByLastName(L, stud);
@@ -166,35 +166,21 @@ void insertSortedByLastName(studList *L, studRecord stud)
 *				INSERT FIRST, UMMM PWEDE RA GURO BASTA KAY					*
 *				MAGSINABUTAY ANG UBAN FUNCTIONS FOR IT 						*
 ****************************************************************************/
-void insertLast(studList *, student)
+void insertLast(studList *L, studRecord stud)
 {
-	
 	studList *trav, temp;
 	
 	temp = (studList)malloc(sizeof(struct node));
 	
 	if(temp != NULL){
 		for(trav = L; *trav != NULL; trav = &(*trav)->next);
-		temp->studRecord = studRecord;
+		temp->stud = stud;
 		
 		temp->next = *trav;
 		*trav = temp;
 	}else{
 		printf("Dynamic Allocation failed!\n");
 	}
-}
-
-/************************ POPULATING THE LIST *******************************
-*						DIRE SAD KA MAG READ FILE							*
-*			BUT IF YOU WANT TO SEPERATE IT AND MAKE ANOTHER FUNCTION 		*
-*			FOR READ FILE, PWEDE RAKA MAGHIMO 								*
-*			DIRE SAD KA MAG COMPUTE SA AVERAGE BUT IF YOU WANT IT SEPERATED *
-*			AND E CALL LANG NIMO, YOU CAN DO SO. THEN YOU CALL 				*
-*			INSERTSORTED() HERE PUD.										*
-*****************************************************************************/
-void populateList(studList *L)
-{
-	
 }
 
 /*********************** DELETE ALL DATA ************************************/
