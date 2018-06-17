@@ -44,7 +44,6 @@ void initializeList(studList *);
 void populateList(studList *);
 void displayList(studList);
 void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
-void insertLast(studList *, studRecord);
 void deleteAll(studList *);
 void calculateActivityAverage(subject *);
 void calculateGeneralAverage(studRecord *);
@@ -131,7 +130,7 @@ void populateList(studList *L)
 			
 			calculateGeneralAverage(&stud);
 			// add student to the list through insertSortedByLastName
-			insertLast(L, stud);
+			insertSortedByLastName(L, stud);
 		}
 		// close the file pointers
 		fclose(fp_firstname);
@@ -148,7 +147,6 @@ void populateList(studList *L)
 		printf("\nError opening files! Please contact the IT department.");
 	}
 }
-
 
 /************* DISPLAY ALL THE LIST FOUND INSIDE THE FILE ******************
 *										  								   *
@@ -167,28 +165,6 @@ void displayList(studList L)
 void insertSortedByLastName(studList *L, studRecord stud)
 {
 	
-}
-
-/****************** INSERT THE DATA SA LAST *********************************
-*				IDK IF SA LAST OR FIRST BA, BUT IF YOU WANT					*
-*				INSERT FIRST, UMMM PWEDE RA GURO BASTA KAY					*
-*				MAGSINABUTAY ANG UBAN FUNCTIONS FOR IT 						*
-****************************************************************************/
-void insertLast(studList *L, studRecord stud)
-{
-	studList *trav, temp;
-	
-	temp = (studList)malloc(sizeof(struct node));
-	
-	if(temp != NULL){
-		for(trav = L; *trav != NULL; trav = &(*trav)->next);
-		temp->stud = stud;
-		
-		temp->next = *trav;
-		*trav = temp;
-	}else{
-		printf("Dynamic Allocation failed!\n");
-	}
 }
 
 /*********************** DELETE ALL DATA ************************************/
