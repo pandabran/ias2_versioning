@@ -27,6 +27,7 @@ typedef struct{
 typedef struct{
 	name studName;
 	subject subj[15];
+	int numSubjects;
 	float genAve;
 }stud;
  
