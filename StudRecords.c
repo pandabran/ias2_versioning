@@ -44,7 +44,8 @@ void deleteAll(studList *);
 void calculateActivityAverage(subject *);
 void calculateGeneralAverage(studList *, subject);
 
-int main(void){
+int main(void)
+{
 	
 	/* YOUR CODE HERE... */ 
 	/* GO PEOPLE KAYA BELS!! */ 
@@ -63,7 +64,8 @@ void initializeList(studList *L)
 *						READ DATA FROM THE FILE							  *
 *																		  *
 ***************************************************************************/
-void populateList(studList *L){
+void populateList(studList *L)
+{
 	
 }
 
@@ -72,7 +74,8 @@ void populateList(studList *L){
 *										  								   *
 *																		   *
 ****************************************************************************/
-void displayList(studList L){
+void displayList(studList L)
+{
 	printf("\nID # First Name\tLast Name\t MUSIC\t ARTS\t PE\t HOME ECONOMICS\tFINAL GRADE\n\n");
 	for(; L != NULL; L = L->next){
 		printf("%d   %-5s\t   %s \t%.1f\t%.1f\t%.1f\t%.1f\t%.2f\n", L->person.id, L->person.fname, L->person.lname, L->person.q1, L->person.q2, L->person.q3, L->person.q4, L->person.average);
@@ -81,7 +84,8 @@ void displayList(studList L){
 }
 
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
-void insertSortedByLastName(studList *, name){
+void insertSortedByLastName(studList *, name)
+{
 	
 }
 
@@ -90,7 +94,8 @@ void insertSortedByLastName(studList *, name){
 *				INSERT FIRST, UMMM PWEDE RA GURO BASTA KAY					*
 *				MAGSINABUTAY ANG UBAN FUNCTIONS FOR IT 						*
 ****************************************************************************/
-void insertLast(studList *, student){
+void insertLast(studList *, student)
+{
 	
 	studList *trav, temp;
 	
@@ -115,12 +120,14 @@ void insertLast(studList *, student){
 *			AND E CALL LANG NIMO, YOU CAN DO SO. THEN YOU CALL 				*
 *			INSERTSORTED() HERE PUD.										*
 *****************************************************************************/
-void populateList(studList *L){
+void populateList(studList *L)
+{
 	
 }
 
 /*********************** DELETE ALL DATA ************************************/
-void deleteAll(studList *L){
+void deleteAll(studList *L)
+{
 	studList temp;
 	
 	while(*L != NULL){
@@ -137,7 +144,8 @@ void deleteAll(studList *L){
 *				CALCULATE THE AVERAGE BOTH ACTIVITIES IN 					*
 *						YOUR ASSIGNED SUBJECT 								*
 ****************************************************************************/
-void calculateActivityAverage(subject *S){
+void calculateActivityAverage(subject *S)
+{
 	
 }
 
@@ -146,8 +154,8 @@ void calculateActivityAverage(subject *S){
 *				CALCULATE ALL THE AVERAGE OF FROM DIFFERENT SUBJECTS 		*
 *						 													*
 ****************************************************************************/
-
-void calculateGeneralAverage(studList *L, subject S){
+void calculateGeneralAverage(studList *L, subject S)
+{
 	
 }
 
