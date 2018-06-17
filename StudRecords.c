@@ -12,6 +12,9 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define MAX_SUBJECTS 4
 
 typedef struct{
 	char fName[30];
@@ -21,12 +24,12 @@ typedef struct{
 typedef struct{
 	float act[2];
 	float ave;
-	char subjName[15];
+	char subjName[6];
 }subject;
 
 typedef struct{
 	name studName;
-	subject subj[15];
+	subject subj[MAX_SUBJECTS];
 	int numSubjects;
 	float genAve;
 }stud;
@@ -67,6 +70,22 @@ void initializeList(studList *L)
 ***************************************************************************/
 void populateList(studList *L)
 {
+	// variable declarations
+	FILE *fp_firstname, *fp_lastname, *fp_arts1, *fp_arts2, *fp_he1, *fp_he2, *fp_music1, *fp_music2, *fp_pe1, *fp_pe2;
+	stud studRecord;
+	
+	// file opening
+	fp_firstname = fopen("firstNames.txt", "r");
+	fp_lastname = fopen("lastNames.txt", "r");
+	fp_arts1 = fopen("arts1.txt", "r");
+	fp_arts2 = fopen("arts2.txt", "r");
+	fp_he1 = fopen("HE1.txt", "r");
+	fp_he2 = fopen("HE2.txt", "r");
+	fp_music1 = fopen("Music1.txt", "r");
+	fp_music2 = fopen("Music2.txt", "r");
+	fp_pe1 = fopen("PE1.txt", "r");
+	fp_pe2 = fopen("PE2.txt", "r");
+	
 	
 }
 
