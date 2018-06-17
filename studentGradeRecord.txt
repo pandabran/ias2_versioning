@@ -1,0 +1,42 @@
+FIRST NAME  LAST NAME     ARTS   H.E.   MUSIC  P.E.   FINAL
+
+
+Lara        Ahmad       81.50  83.50  82.00  91.00  84.50  
+
+Rufus       Benham      81.50  77.00  86.00  95.00  84.88  
+
+Keesha      Bomar       74.50  89.00  79.50  89.00  83.00  
+
+Nestor      Buresh      81.50  86.50  95.50  83.00  86.63  
+
+Malcolm     Cada        74.50  88.00  97.50  88.50  87.13  
+
+Krysten     Cranmer     79.50  86.50  92.00  88.00  86.50  
+
+Gaylene     Durant      82.00  87.50  93.50  94.50  89.38  
+
+Peg         Girton      91.00  81.00  84.00  82.00  84.50  
+
+Celestina   Herbst      92.00  81.00  84.50  92.50  87.50  
+
+Lester      Hopwood     80.50  97.50  83.00  89.00  87.50  
+
+Lynette     Hornback    84.50  88.00  92.50  82.50  86.88  
+
+Patty       Krasner     88.50  83.00  82.00  77.00  82.63  
+
+Yolande     Lant        72.50  91.00  86.00  89.50  84.75  
+
+Margeret    Lugo        91.00  93.50  89.50  96.50  92.63  
+
+Russel      Morquecho   85.00  86.50  81.50  91.00  86.00  
+
+Leigh       Piekarski   93.00  84.00  82.50  78.50  84.50  
+
+Christopher Poll        85.00  84.00  83.50  90.50  85.75  
+
+Angelo      Ritch       76.50  81.00  92.50  94.00  86.00  
+
+Marshall    Tittle      87.00  84.00  84.00  98.00  88.25  
+
+Drema       Vanscyoc    84.50  88.50  84.50  91.50  87.25  

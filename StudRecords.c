@@ -40,14 +40,13 @@ typedef struct node{
 	struct node* next;
 }*studList;
 
-void initializeList(studList *);
-void populateList(studList *);
-void displayList(studList);
-void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
-void deleteAll(studList *);
-void calculateActivityAverage(subject *);
-void calculateGeneralAverage(studRecord *);
-void insertLast(studList *, studRecord);
+void initializeList(studList *L);
+void populateList(studList *L);
+void displayList(studList L);
+void insertSortedByLastName(studList *L, studRecord stud); /* ASCENDING ORDER */
+void deleteAll(studList *L);
+void calculateActivityAverage(subject *L);
+void calculateGeneralAverage(studRecord *L);
 
 int main(void)
 {
@@ -176,11 +175,26 @@ void populateList(studList *L)
 ****************************************************************************/
 void displayList(studList L)
 {
-	printf("\n%-12s%-12s%-7s%-7s%-7s%-7s%-7s\n\n", "FIRST NAME", "LAST NAME", "  ARTS", "  H.E.", "  MUSIC", "  P.E.", "  FINAL");
-	for(; L != NULL; L = L->next){
-		printf("%-12s%-12s%7.2f%7.2f%7.2f%7.2f%7.2f\n", L->stud.studName.fName, L->stud.studName.lName, L->stud.subj[0].ave, L->stud.subj[1].ave, L->stud.subj[2].ave, L->stud.subj[3].ave, L->stud.genAve);
+	
+	FILE *fp = fopen("studentGradeRecord.txt", "wb+");
+	
+	if(fp!=NULL){
+		printf("\n\tFile studGradeRecord.txt has been made...\n");
+		fprintf(fp,"%-12s%-12s%-7s%-7s%-7s%-7s%-7s\n\n", "FIRST NAME", "LAST NAME", "  ARTS", "  H.E.", "  MUSIC", "  P.E.", "  FINAL\r");
+		
+		for(; L != NULL; L = L->next){
+			fprintf(fp,"\r\n%-12s", L->stud.studName.fName);
+			fprintf(fp,"%-12s", L->stud.studName.lName);
+			fprintf(fp,"%-7.2f", L->stud.subj[0].ave);
+			fprintf(fp,"%-7.2f",L->stud.subj[1].ave);
+			fprintf(fp,"%-7.2f", L->stud.subj[2].ave);
+			fprintf(fp,"%-7.2f" , L->stud.subj[3].ave);
+			fprintf(fp,"%-7.2f", L->stud.genAve);
+			fprintf(fp,"\n");
+		}
 	}
-		printf("\n--------NOTHING FOLLOWS---------\n");
+	
+	printf("\n--------CHECK studentGradeRecord.txt file---------\n");
 }
 
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
