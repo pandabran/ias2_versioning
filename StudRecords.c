@@ -15,6 +15,7 @@
 #include <string.h>
 
 #define MAX_SUBJECTS 4
+#define NUM_STUDENTS 20
 
 typedef struct{
 	char fName[30];
@@ -32,10 +33,10 @@ typedef struct{
 	subject subj[MAX_SUBJECTS];
 	int numSubjects;
 	float genAve;
-}stud;
+}studRecord;
  
 typedef struct node{
-	stud studRecord;
+	studRecord stud;
 	struct node* next;
 }studList*;
 
@@ -72,7 +73,8 @@ void populateList(studList *L)
 {
 	// variable declarations
 	FILE *fp_firstname, *fp_lastname, *fp_arts1, *fp_arts2, *fp_he1, *fp_he2, *fp_music1, *fp_music2, *fp_pe1, *fp_pe2;
-	stud studRecord;
+	studRecord stud;
+	int i;
 	
 	// file opening
 	fp_firstname = fopen("firstNames.txt", "r");
@@ -86,7 +88,24 @@ void populateList(studList *L)
 	fp_pe1 = fopen("PE1.txt", "r");
 	fp_pe2 = fopen("PE2.txt", "r");
 	
-	
+	// processing
+	if(fp_firstname != NULL && fp_lastname != NULL && fp_arts1 != NULL && fp_arts2 != NULL && fp_he1 != NULL && fp_he2 != NULL & fp_music1 != NULL && fp_music2 != NULL && fp_pe1 != NULL && fp_pe2 != NULL){
+		for(i = 0; i < NUM_STUDENTS; i++){
+			
+		}
+		fclose(fp_firstname);
+		fclose(fp_lastname);
+		fclose(fp_arts1);
+		fclose(fp_arts2);
+		fclose(fp_he1);
+		fclose(fp_he2);
+		fclose(fp_music1);
+		fclose(fp_music2);
+		fclose(fp_pe1);
+		fclose(fp_pe2);
+	}else{
+		printf("\nError opening files! Please contact the IT department.");
+	}
 }
 
 
@@ -104,7 +123,7 @@ void displayList(studList L)
 }
 
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
-void insertSortedByLastName(studList *, name)
+void insertSortedByLastName(studList *, stud)
 {
 	
 }
