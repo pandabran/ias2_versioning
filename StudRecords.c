@@ -43,7 +43,7 @@ typedef struct node{
 void initializeList(studList *);
 void populateList(studList *);
 void displayList(studList);
-void insertSortedByLastName(studList *, name); /* ASCENDING ORDER */
+void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
 void insertLast(studList *, student);
 void deleteAll(studList *);
 void calculateActivityAverage(subject *);
@@ -91,8 +91,41 @@ void populateList(studList *L)
 	// processing
 	if(fp_firstname != NULL && fp_lastname != NULL && fp_arts1 != NULL && fp_arts2 != NULL && fp_he1 != NULL && fp_he2 != NULL & fp_music1 != NULL && fp_music2 != NULL && fp_pe1 != NULL && fp_pe2 != NULL){
 		for(i = 0; i < NUM_STUDENTS; i++){
+			// initially set the number of subjects to 0
+			stud.numSubjects = 0;
 			
+			// add the name of the student
+			fscanf(fp_firstname, "%s", stud.studName.fName);
+			fscanf(fp_lastname, "%s", stud.studName.lName);
+			
+			// add the grades of the student for the first subject and increment the counter
+			strcpy(stud.subj[stud.numSubjects].subjName, "Arts");
+			fscanf(fp_arts1, "%d", stud.subj[stud.numSubjects].act[0]);
+			fscanf(fp_arts2, "%d", stud.subj[stud.numSubjects].act[1]);
+			stud.nunSubjects++;
+			
+			// add the grades of the student for the second subject and increment the counter
+			strcpy(stud.subj[stud.numSubjects].subjName, "H.E.");
+			fscanf(fp_he1, "%d", stud.subj[stud.numSubjects].act[0]);
+			fscanf(fp_he2, "%d", stud.subj[stud.numSubjects].act[1]);
+			stud.nunSubjects++;
+			
+			// add the grades of the student for the third subject and increment the counter
+			strcpy(stud.subj[stud.numSubjects].subjName, "Music");
+			fscanf(fp_music1, "%d", stud.subj[stud.numSubjects].act[0]);
+			fscanf(fp_music2, "%d", stud.subj[stud.numSubjects].act[1]);
+			stud.nunSubjects++;
+			
+			// add the grades of the student for the fourth subject and increment the counter
+			strcpy(stud.subj[stud.numSubjects].subjName, "P.E.");
+			fscanf(fp_pe1, "%d", stud.subj[stud.numSubjects].act[0]);
+			fscanf(fp_pe2, "%d", stud.subj[stud.numSubjects].act[1]);
+			stud.nunSubjects++;
+			
+			// add student to the list through insertSortedByLastName
+			insertSortedByLastName(L, stud);
 		}
+		// close the file pointers
 		fclose(fp_firstname);
 		fclose(fp_lastname);
 		fclose(fp_arts1);
@@ -123,7 +156,7 @@ void displayList(studList L)
 }
 
 /******************* SORT THE DATA BY ITS LAST NAME ************************/
-void insertSortedByLastName(studList *, stud)
+void insertSortedByLastName(studList *L, studRecord stud)
 {
 	
 }
