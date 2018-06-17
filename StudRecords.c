@@ -63,7 +63,7 @@ void initializeList(studList *L)
 *						READ DATA FROM THE FILE							  *
 *																		  *
 ***************************************************************************/
-void populateListLastName(studList *L){
+void populateList(studList *L){
 	
 }
 
