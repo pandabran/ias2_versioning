@@ -47,6 +47,7 @@ void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
 void deleteAll(studList *);
 void calculateActivityAverage(subject *);
 void calculateGeneralAverage(studRecord *);
+void insertLast(studList *, studRecord);
 
 int main(void)
 {
@@ -58,6 +59,27 @@ int main(void)
 	return 0;
 }
 
+/****************** INSERT THE DATA SA LAST *********************************
+*				IDK IF SA LAST OR FIRST BA, BUT IF YOU WANT					*
+*				INSERT FIRST, UMMM PWEDE RA GURO BASTA KAY					*
+*				MAGSINABUTAY ANG UBAN FUNCTIONS FOR IT 						*
+****************************************************************************/
+void insertLast(studList *L, studRecord stud){
+	
+	studList *trav, temp;
+	
+	temp = (studList)malloc(sizeof(struct node));
+	
+	if(temp != NULL){
+		for(trav = L; *trav != NULL; trav = &(*trav)->next);
+		temp->stud = stud;
+		
+		temp->next = *trav;
+		*trav = temp;
+	}else{
+		printf("Dynamic Allocation failed!\n");
+	}
+}
 
 /****************************** INITIALIZE LIST ****************************/
 void initializeList(studList *L)
@@ -130,7 +152,7 @@ void populateList(studList *L)
 			
 			calculateGeneralAverage(&stud);
 			// add student to the list through insertSortedByLastName
-			insertSortedByLastName(L, stud);
+			insertLast(L, stud);
 		}
 		// close the file pointers
 		fclose(fp_firstname);
@@ -154,9 +176,9 @@ void populateList(studList *L)
 ****************************************************************************/
 void displayList(studList L)
 {
-	printf("\n%-12s%-12s%-7s%-7s%-7s%-7s%-7s\n\n", "FIRST NAME", "LAST NAME", "  ARTS", "  H.E.", " MUSIC", "  P.E.", " FINAL");
+	printf("\n%-12s%-12s%-7s%-7s%-7s%-7s%-7s\n\n", "FIRST NAME", "LAST NAME", "  ARTS", "  H.E.", "  MUSIC", "  P.E.", "  FINAL");
 	for(; L != NULL; L = L->next){
-		printf("%-12s%-12s%4d%7d%7d%7d%8.2f\n", L->stud.studName.fName, L->stud.studName.lName, L->stud.subj[0].ave, L->stud.subj[1].ave, L->stud.subj[2].ave, L->stud.subj[3].ave, L->stud.genAve);
+		printf("%-12s%-12s%7.2f%7.2f%7.2f%7.2f%7.2f\n", L->stud.studName.fName, L->stud.studName.lName, L->stud.subj[0].ave, L->stud.subj[1].ave, L->stud.subj[2].ave, L->stud.subj[3].ave, L->stud.genAve);
 	}
 		printf("\n--------NOTHING FOLLOWS---------\n");
 }
@@ -188,7 +210,7 @@ void deleteAll(studList *L)
 ****************************************************************************/
 void calculateActivityAverage(subject *S)
 {
-	S->ave = (S->act[0] + S->act[1]) / 2;
+	S->ave = (S->act[0] + S->act[1]) / 2.0;
 }
 
 
@@ -201,10 +223,10 @@ void calculateGeneralAverage(studRecord *stud)
 	float sum;
 	int i;
 	
+	sum = 0;
 	for(i = 0; i < stud->numSubjects; i++){
-		sum = 0;
-		sum += stud->subj[stud->numSubjects].ave;
-		stud->genAve = sum / stud->numSubjects;
+		sum += stud->subj[i].ave;
 	}
+	stud->genAve = sum / stud->numSubjects;
 }
 
