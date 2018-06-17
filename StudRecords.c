@@ -188,7 +188,7 @@ void deleteAll(studList *L)
 ****************************************************************************/
 void calculateActivityAverage(subject *S)
 {
-	
+	S->ave = (S->act[0] + S->act[1]) / 2;
 }
 
 
