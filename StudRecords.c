@@ -47,7 +47,7 @@ void insertSortedByLastName(studList *, studRecord); /* ASCENDING ORDER */
 void insertLast(studList *, studRecord);
 void deleteAll(studList *);
 void calculateActivityAverage(subject *);
-void calculateGeneralAverage(studList *);
+void calculateGeneralAverage(studRecord *);
 
 int main(void)
 {
@@ -100,34 +100,36 @@ void populateList(studList *L)
 			// add the name of the student
 			fscanf(fp_firstname, "%s", stud.studName.fName);
 			fscanf(fp_lastname, "%s", stud.studName.lName);
-			
-			
+						
 			// add the grades of the student for the first subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "Arts");
 			fscanf(fp_arts1, "%d", &stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_arts2, "%d", &stud.subj[stud.numSubjects].act[1]);
+			calculateActivityAverage(&stud.subj[stud.numSubjects]);
 			stud.numSubjects++;
-			
 			
 			// add the grades of the student for the second subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "H.E.");
 			fscanf(fp_he1, "%d", &stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_he2, "%d", &stud.subj[stud.numSubjects].act[1]);
+			calculateActivityAverage(&stud.subj[stud.numSubjects]);
 			stud.numSubjects++;
 			
 			// add the grades of the student for the third subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "Music");
 			fscanf(fp_music1, "%d", &stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_music2, "%d", &stud.subj[stud.numSubjects].act[1]);
+			calculateActivityAverage(&stud.subj[stud.numSubjects]);
 			stud.numSubjects++;
 			
 			// add the grades of the student for the fourth subject and increment the counter
 			strcpy(stud.subj[stud.numSubjects].subjName, "P.E.");
 			fscanf(fp_pe1, "%d", &stud.subj[stud.numSubjects].act[0]);
 			fscanf(fp_pe2, "%d", &stud.subj[stud.numSubjects].act[1]);
+			calculateActivityAverage(&stud.subj[stud.numSubjects]);
 			stud.numSubjects++;
 			
-			calculateGeneralAverage(L);
+			calculateGeneralAverage(&stud);
 			// add student to the list through insertSortedByLastName
 			insertLast(L, stud);
 		}
@@ -218,20 +220,15 @@ void calculateActivityAverage(subject *S)
 *				CALCULATE ALL THE AVERAGE OF FROM DIFFERENT SUBJECTS 		*
 *						 													*
 ****************************************************************************/
-void calculateGeneralAverage(studList *L)
+void calculateGeneralAverage(studRecord *stud)
 {
-	studList *trav;
 	float sum;
 	int i;
 	
-	// traverse all student records
-	for(trav = L; *trav != NULL; trav = &(*trav)->next){
+	for(i = 0; i < stud->numSubjects; i++){
 		sum = 0;
-		// sum up all of the averages
-		for(i = 0; i < (*trav)->stud.numSubjects; i++){
-			sum += (*trav)->stud.subj[i].ave;
-		}
-		(*trav)->stud.genAve = sum / (*trav)->stud.numSubjects;
+		sum += stud->subj[stud->numSubjects].ave;
+		stud->genAve = sum / stud->numSubjects;
 	}
 }
 
