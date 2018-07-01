@@ -8,7 +8,7 @@ if(!isset($_SESSION['id'])){
 $query = mysqli_query($sql, "SELECT * FROM user WHERE user_id =".$_SESSION['id']);
 $query2 = mysqli_query($sql, "SELECT teacher.teacher_id, subject.subject_id, user.user_id, subject.course_name FROM teacher
 JOIN user ON user.user_id = teacher.teacher_id
-JOIN subject ON subject.subject_id = teacher.subject_id ");
+JOIN subject ON subject.subject_id = teacher.subject_id");
 $row = mysqli_fetch_row($query);
 $row2 = mysqli_fetch_row($query2);
 
@@ -43,43 +43,43 @@ $row2 = mysqli_fetch_row($query2);
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="home.html">
+            <a href="home.php">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="schedule.html">
+            <a href="schedule.php">
               <i class="now-ui-icons ui-1_calendar-60"></i>
               <p>Schedule</p>
             </a>
           </li>
           <li>
-            <a href="lesson.html">
+            <a href="lesson.php">
               <i class="now-ui-icons education_agenda-bookmark"></i>
               <p>Lesson Plan</p>
             </a>
           </li>
           <li>
-            <a href="grades.html">
+            <a href="grades.php">
               <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>Grades</p>
             </a>
           </li>
           <li>
-            <a href="notifications.html">
+            <a href="notifications.php">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li class="active ">
-            <a href="user.html">
+            <a href="profile.php">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-            <a href="list.html">
+            <a href="list.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Class List</p>
             </a>
@@ -247,7 +247,7 @@ $row2 = mysqli_fetch_row($query2);
                     <h5 class="title"><?php echo $row[1]." ".$row[2]?></h5>
                   </a>
                   <p class="description">
-                    <?php echo $row[3];?>
+                    <?php echo $row[0];?>
                   </p>
                 </div>
                 <p class="description text-center">
