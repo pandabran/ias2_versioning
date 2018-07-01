@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 05:36 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jul 01, 2018 at 06:27 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -195,7 +195,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`) VALUES
 (1, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000),
 (2, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
-(3, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 0),
+(3, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 6002),
 (4, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000),
 (5, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000),
 (6, 'Russel', 'Morquecho', 'student', '', '', '', '', 0),
