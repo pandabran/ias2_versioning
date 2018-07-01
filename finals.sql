@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 06:27 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Jul 01, 2018 at 06:32 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `finals`
+-- Database: `tst`
 --
 
 -- --------------------------------------------------------
@@ -49,7 +49,7 @@ CREATE TABLE `coordinator` (
 --
 
 INSERT INTO `coordinator` (`coordinator_id`) VALUES
-(5);
+(15100105);
 
 -- --------------------------------------------------------
 
@@ -87,6 +87,20 @@ CREATE TABLE `lesson_plan` (
   `is_approved` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lesson_plan`
+--
+
+INSERT INTO `lesson_plan` (`plan_id`, `subject_id`, `schedule_id`, `venue`, `teacher_id`, `date_created`, `date_of_plan`, `date_updated`, `lesson_outline`, `objectives`, `instruction`, `motivation`, `materials`, `coordinator_id`, `is_approved`) VALUES
+(1, 3, 1, 'Gym', 15100103, '2018-06-09', '2018-06-11', '2018-06-10', 'The students can determine the importance of physical fitness and can also explain the different components of physical fitness.', 'Students can explain the aspects of physical fitness, list and define factors that impact physical fitness, and create physical fitness personal plan.  ', 'Engage the students with topic by asking them what the term ‘Physical fitness’ is to them. Show a video clip about physical fitness. Then divide the class into 7 groups and give each group a marker. Let them write each physical fitness components and explain. Let them report their work in front of the class after 45 minutes. After each report they will prepare ¼ piece of paper and write their learnings about the lesson for today.', 'The group who receives the highest grade will be given plus points and a chocolate bar.', 'Manila Paper, Marker', 15100105, 1),
+(2, 2, 2, 'Quadrangle', 15100102, '2018-06-10', '2018-06-11', '2018-06-10', 'This visual arts lesson will allow students to get creative while practicing with either photography or videography. Students will also have to consider perspective from things outside themselves. Rubric included', 'The learners will create a photo array with narrative or a short video with sound sharing the perspective of an inanimate object. Students will be expected to be creative in both the verbal and artistic areas of the assignment.', 'Students will choose an inanimate object in the building or at their home to photograph or use for the video project.\r\nThe first shot will be of the actual object, but all other photos or video shots will be from the perspective of the object.\r\nAdditionally, commentary will be offered about how the object may think about the world.\r\n', 'Ask students to think about the world from that perspective for a moment.\r\nNow have students think about the world if they could only see from that position they are in, all day, every day, in the same spot.\r\nStudents with the best shot will be exhibited in the mural.\r\n', 'Cameras or video cameras for each student\r\nComputers/printers for completion of the project (any appropriate video sharing platform or photo sharing program should work)\r\n', 15100105, 1),
+(3, 1, 3, 'Music Room 2', 15100101, '2018-06-09', '2018-06-12', '2018-06-10', 'The students will learn how to read musical notes.', 'The learners will be able to know the names of each note and their corresponding measure.\r\nLecture will be followed by a test to measure student’s understanding about the lesson\r\n', 'Students will listen to a number of notes at a time with the aid of a metronome to help them to be familiar with the measures of notes. \r\nThe learners will be asked few questions related to the topic discussed.\r\n', 'The student/s who got the highest score will be asked about their favorite music as of the moment and it’ll be the piece the class will learn and play at the end of the 1st quarter.', 'Materials Needed\r\nPapers, pens, metronome, stereo, audio file.\r\n', 15100105, 1),
+(4, 4, 4, 'Library and Classroom', 15100104, '2018-06-10', '2018-06-12', '2018-06-10', 'Students will lean the long history of embroidery and the different symbolisms of embroidery.', 'Students will be able to explain the history and symbolisms of embroidery.', 'The students will be group into 7. Each group will be assigned to a timeline and will research about its history in embroidery. They will then present their research in front of the class through role play. Each group will be given 5 minutes to present their role play and explain their role play. ', 'The group who scores the highest will receive a perfect score and will receive a bonus point.', 'Music Play', 15100105, 1),
+(5, 3, 1, 'Gym', 15100103, '2018-06-09', '2018-06-13', '2018-06-10', 'This lesson will allow students to determine different physical fitness test exercise and perform each test with the materials provided.', 'Students will able to learn about the different physical fitness test exercise. Performing the test exercise can help keep student’s body at a healthy weight. This can also decrease a person’s risk of developing certain diseases like obesity, type 2 diabetes, and high blood pressure.', 'Divide the class into 7 groups, each member of the group must explain the different types of physical fitness test that they could remember. They will be given 20-30 minutes for this activity. After 30 minutes, they will report their ideas in front of the class. After each report of the group, the teacher will give a quick explanation regarding each test. After the report, Students will do a short exercise before performing the different types of physical fitness test provided by the teacher. The materials are scattered around the gym area in order for the students to freely perform the exercises. They will perform this activity for the entire encounter', 'Students with the highest number of physical fitness test that they could remember will be given plus points and a chocolate bar. ', 'Chalk, measuring stick, small traffic cones, weight balance, tape measure, ', 15100105, 1),
+(6, 2, 2, 'Quadrangle', 15100102, '2018-06-10', '2018-06-13', '2018-06-10', 'This lesson will allow students to practice creating art from a unique perspective while learning about Michelangelo.', 'Students should be able to create a unique drawing from a different perspective, just as when Michelangelo painted the Sistine Chapel ceiling.', 'Have students tape a piece of paper under their desks or tables.\r\nHave all art supplies at arm’s reach.\r\nAllow students to create a unique piece of art, but explain that the whole paper should be covered.\r\n', 'Ask the students if they have heard about Michelangelo or the Sistine Chapel.\r\nExplain that today they will try to create something beautiful while painting like Michelangelo.\r\nStudents with the best painting will be exhibited outside the classroom for one week.\r\n', 'Paper, paints (for older students), crayons/markers (for younger students), tape, floor covering where needed', 15100105, 1),
+(7, 1, 3, 'Music Room 2', 15100101, '2018-06-10', '2018-06-14', '2018-06-10', 'This lesson will allow students to make music sheets.', 'Students will learn which part of the sheet a note should be placed based on the given letter in the music alphabet/note.', 'Students will be flashed a series of letters and will place a whole note on the sheet music basing from the letter given.', 'Student who got the highest remark will be able to choose his/her own piece to play at the end of the 1st quarter with an additional 10 points to his/her 1st quarter exam grade.', 'Paper, pen.', 15100105, 1),
+(8, 4, 4, 'Classroom and Library', 15100104, '2018-06-10', '2018-06-14', '2018-06-10', 'Students will learn the basic stitches used in embroidery. This will serve as the fundamentals in creating embroidery design.', 'Students will be able to demonstrate all the basic stitching of embroidery and gain basic knowledge that will be there guide in doing embroidery.', 'The teacher will demonstrate in front of the class all 6 basic stitching used in embroidery. Once the students have seen the demonstration, they will be task to individually make their own sample stitches of the 6 basic stitches in embroidery on a piece of 4x4 white clothe. They may make use of any colour of thread and any size of needle. Once they have finish they will submit it to the teacher for checking.', 'Those who will score 60% base from the rubrics will be exempted in the upcoming quiz and will be given a perfect score for it. ', 'White Clothe, thread and needle', 15100105, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -107,10 +121,10 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `subject_id`, `day`, `start_time`, `end_time`) VALUES
-(1, 1, 1, 'TTh', '07:30:00', '11:30:00'),
-(2, 2, 2, 'MW', '13:00:00', '16:00:00'),
-(3, 3, 3, 'MW', '09:00:00', '12:00:00'),
-(4, 4, 4, 'TTh', '09:00:00', '12:00:00');
+(1, 15100103, 3, 'MW', '09:00:00', '12:00:00'),
+(2, 15100102, 2, 'MW', '13:00:00', '16:00:00'),
+(3, 15100101, 1, 'TTh', '09:00:00', '12:00:00'),
+(4, 15100104, 4, 'TTh', '13:00:00', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -124,6 +138,32 @@ CREATE TABLE `student` (
   `year` int(4) NOT NULL,
   `section` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `gwa`, `year`, `section`) VALUES
+(15100106, 0.00, 1, 'Humility'),
+(15100107, 0.00, 1, 'Humility'),
+(15100108, 0.00, 1, 'Humility'),
+(15100109, 0.00, 1, 'Humility'),
+(15100110, 0.00, 1, 'Humility'),
+(15100111, 0.00, 1, 'Humility'),
+(15100112, 0.00, 1, 'Humility'),
+(15100113, 0.00, 1, 'Humility'),
+(15100114, 0.00, 1, 'Humility'),
+(15100115, 0.00, 1, 'Humility'),
+(15100116, 0.00, 1, 'Humility'),
+(15100117, 0.00, 1, 'Humility'),
+(15100118, 0.00, 1, 'Humility'),
+(15100119, 0.00, 1, 'Humility'),
+(15100120, 0.00, 1, 'Humility'),
+(15100121, 0.00, 1, 'Humility'),
+(15100122, 0.00, 1, 'Humility'),
+(15100123, 0.00, 1, 'Humility'),
+(15100124, 0.00, 1, 'Humility'),
+(15100125, 0.00, 1, 'Humility');
 
 -- --------------------------------------------------------
 
@@ -155,20 +195,18 @@ INSERT INTO `subject` (`subject_id`, `course_code`, `course_name`) VALUES
 
 CREATE TABLE `teacher` (
   `teacher_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`teacher_id`, `subject_id`, `email`, `password`) VALUES
-(1, 1, 'devorahnarvaez@gmail.com', 'devqui123'),
-(2, 2, 'krizialumapas@gmail.com', 'krilum123'),
-(3, 3, 'janemanguiran@gmail.com', 'janman123'),
-(4, 4, 'abigailsemilla@gmail.com', 'abisem123');
+INSERT INTO `teacher` (`teacher_id`, `subject_id`) VALUES
+(15100101, 1),
+(15100102, 2),
+(15100103, 3),
+(15100104, 4);
 
 -- --------------------------------------------------------
 
@@ -185,39 +223,41 @@ CREATE TABLE `user` (
   `town` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
-  `zipcode` int(4) NOT NULL
+  `zipcode` int(4) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`) VALUES
-(1, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000),
-(2, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
-(3, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 6002),
-(4, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000),
-(5, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000),
-(6, 'Russel', 'Morquecho', 'student', '', '', '', '', 0),
-(7, 'Malcolm', 'Cada', 'student', '', '', '', '', 0),
-(8, 'Patty', 'Krasner', 'student', '', '', '', '', 0),
-(9, 'Celestina', 'Herbst', 'student', '', '', '', '', 0),
-(10, 'Rufus', 'Benham', 'student', '', '', '', '', 0),
-(11, 'Nestor ', 'Buresh', 'student', '', '', '', '', 0),
-(12, 'Yolande ', 'Lant', 'student', '', '', '', '', 0),
-(13, 'Peg ', 'Girton', 'student', '', '', '', '', 0),
-(14, 'Leigh', 'Piekarski', 'student', '', '', '', '', 0),
-(15, 'Christopher', 'Poll', 'student', '', '', '', '', 0),
-(16, 'Drema', 'Vanscyoc', 'student', '', '', '', '', 0),
-(17, 'Gaylene', 'Durant', 'student', '', '', '', '', 0),
-(18, 'Krysten', 'Cranmer', 'student', '', '', '', '', 0),
-(19, 'Marshall', 'Tittle', 'student', '', '', '', '', 0),
-(20, 'Keesha', 'Bomar', 'student', '', '', '', '', 0),
-(21, 'Lester', 'Hopwood', 'student', '', '', '', '', 0),
-(22, 'Lynette', 'Hornback', 'student', '', '', '', '', 0),
-(23, 'Angelo', 'Ritch', 'student', '', '', '', '', 0),
-(24, 'Margeret', 'Lugo', 'student', '', '', '', '', 0),
-(25, 'Lara', 'Ahmad', 'student', '', '', '', '', 0);
+INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`, `email`, `password`) VALUES
+(15100101, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000, 'devorahnarvaez@gmail.com', 'devqui123'),
+(15100102, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, 'krizialumapas@gmail.com', 'krilum123'),
+(15100103, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, 'janemanguiran@gmail.com', 'janman123'),
+(15100104, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'abigailsemilla@gmail.com', 'abisem123'),
+(15100105, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'benedictsanchez@gmail.com', 'bensan123'),
+(15100106, 'Russel', 'Morquecho', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100107, 'Malcolm', 'Cada', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100108, 'Patty', 'Krasner', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100109, 'Celestina', 'Herbst', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100110, 'Rufus', 'Benham', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100111, 'Nestor', 'Buresh', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100112, 'Yolande', 'Lant', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100113, 'Peg', 'Girton', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100114, 'Leigh', 'Piekarski', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100115, 'Christopher', 'Poll', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100116, 'Drema', 'Vanscyoc', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100117, 'Gaylene', 'Durant', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100118, 'Krysten', 'Cranmer', 'student', '', 'Mandaue', 'Cebu', 'Philippines', 6000, '', ''),
+(15100119, 'Marshall', 'Tittle', 'student', '', 'Minganilla', 'Minganilla', 'Philippines', 6000, '', ''),
+(15100120, 'Keesha', 'Bomar', 'student', '', 'Pit-os', 'Cebu', 'Philippines', 6000, '', ''),
+(15100121, 'Lester', 'Hopwood', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100122, 'Lynette', 'Hornback', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100123, 'Angelo', 'Ritch', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100124, 'Margeret', 'Lugo', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100125, 'Lara', 'Ahmad', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', '');
 
 --
 -- Indexes for dumped tables
@@ -300,7 +340,7 @@ ALTER TABLE `activity`
 -- AUTO_INCREMENT for table `lesson_plan`
 --
 ALTER TABLE `lesson_plan`
-  MODIFY `plan_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `plan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `schedule`
@@ -318,7 +358,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15100126;
 
 --
 -- Constraints for dumped tables
