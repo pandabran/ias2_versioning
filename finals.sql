@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 11:16 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Jul 01, 2018 at 01:00 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -118,6 +120,16 @@ CREATE TABLE `subject` (
   `course_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subject_id`, `course_code`, `course_name`) VALUES
+(1, 'Msc1', 'Music 1'),
+(2, 'Arts11', 'Arts 11'),
+(3, 'PE11', 'Physical Education 11'),
+(4, 'HE11', 'Home Economics 11');
+
 -- --------------------------------------------------------
 
 --
@@ -128,6 +140,16 @@ CREATE TABLE `teacher` (
   `teacher_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`teacher_id`, `subject_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -150,7 +172,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `email`, `password`, `type`, `filename`) VALUES
-(1, 'Gail', 'Ducao', 'gailducao@gmail.com', 'ducao123', '', '');
+(1, 'Devorah', 'Narvaez', 'devorahnarvaez@gmail.com', 'devqui123', 'teacher_student', ''),
+(2, 'Krizia', 'Lumapas', 'krizialumapas@gmail.com', 'krilum123', 'teacher_student', ''),
+(3, 'Jane', 'Manguiran', 'janemanguiran@gmail.com', 'janman123', 'teacher_student', ''),
+(4, 'Abigail', 'Semilla', 'abigailsemilla@gmail.com', 'abisem123', 'teacher_student', ''),
+(5, 'Benedict', 'Sanchez', 'benedictsanchez@gmail.com', 'bensan123', 'coordination', '');
 
 --
 -- Indexes for dumped tables
@@ -228,26 +254,31 @@ ALTER TABLE `user`
 --
 ALTER TABLE `activity`
   MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `lesson_plan`
 --
 ALTER TABLE `lesson_plan`
   MODIFY `plan_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Constraints for dumped tables
 --
@@ -299,6 +330,7 @@ ALTER TABLE `student`
 ALTER TABLE `teacher`
   ADD CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `teacher_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
