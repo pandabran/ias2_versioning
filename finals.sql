@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 02:27 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jun 27, 2018 at 06:13 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `finals`
+-- Database: `usc_mapeh`
 --
 
 -- --------------------------------------------------------
@@ -120,16 +120,6 @@ CREATE TABLE `subject` (
   `course_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `subject`
---
-
-INSERT INTO `subject` (`subject_id`, `course_code`, `course_name`) VALUES
-(1, 'Msc1', 'Music 1'),
-(2, 'Arts11', 'Arts 11'),
-(3, 'PE11', 'Physical Education 11'),
-(4, 'HE11', 'Home Economics 11');
-
 -- --------------------------------------------------------
 
 --
@@ -141,16 +131,6 @@ CREATE TABLE `teacher` (
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `teacher`
---
-
-INSERT INTO `teacher` (`teacher_id`, `subject_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -161,26 +141,9 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `filename` varchar(30) NOT NULL,
-  `town` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `zipcode` int(4) NOT NULL
+  `filename` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `email`, `password`, `type`, `filename`, `town`, `city`, `country`, `zipcode`) VALUES
-(1, 'Devorah', 'Narvaez', 'devorahnarvaez@gmail.com', 'devqui123', 'teacher_student', '', 'Talamban', 'Cebu', 'Philippines', 6000),
-(2, 'Krizia', 'Lumapas', 'krizialumapas@gmail.com', 'krilum123', 'teacher_student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
-(3, 'Jane', 'Manguiran', 'janemanguiran@gmail.com', 'janman123', 'teacher_student', '', 'Lilo-an', 'Cebu', 'Philippines', 0),
-(4, 'Abigail', 'Semilla', 'abigailsemilla@gmail.com', 'abisem123', 'teacher_student', '', 'Cebu', 'Cebu', 'Philippines', 0),
-(5, 'Benedict', 'Sanchez', 'benedictsanchez@gmail.com', 'bensan123', 'coordination', '', 'Cebu', 'Cebu', 'Philippines', 0);
 
 --
 -- Indexes for dumped tables
@@ -275,13 +238,13 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

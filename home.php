@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location:index.php");
   }
-  //echo $_SESSION['id'];
+  echo $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
