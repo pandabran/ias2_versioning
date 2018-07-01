@@ -41,37 +41,37 @@ if(!isset($_SESSION['id'])){
             </a>
           </li>
           <li>
-            <a href="schedule.html">
+            <a href="schedule.php">
               <i class="now-ui-icons ui-1_calendar-60"></i>
               <p>Schedule</p>
             </a>
           </li>
           <li>
-            <a href="lesson.html">
+            <a href="lesson.php">
               <i class="now-ui-icons education_agenda-bookmark"></i>
               <p>Lesson Plan</p>
             </a>
           </li>
           <li>
-            <a href="grades.html">
+            <a href="grades.php">
               <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>Grades</p>
             </a>
           </li>
           <li>
-            <a href="notifications.html">
+            <a href="notifications.php">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li class="active ">
-            <a href="user.html">
+            <a href="user.php">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-            <a href="list.html">
+            <a href="list.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Class List</p>
             </a>
@@ -119,11 +119,11 @@ if(!isset($_SESSION['id'])){
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">About</a>
-                  <a class="dropdown-item" href="index.html">Logout</a>
+                  <a class="dropdown-item" href="index.php">Logout</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="user.html">
+                <a class="nav-link" href="user.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
