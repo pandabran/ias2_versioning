@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 03:54 PM
+-- Generation Time: Jul 01, 2018 at 05:36 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -43,6 +43,13 @@ CREATE TABLE `activity` (
 CREATE TABLE `coordinator` (
   `coordinator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `coordinator`
+--
+
+INSERT INTO `coordinator` (`coordinator_id`) VALUES
+(5);
 
 -- --------------------------------------------------------
 
@@ -190,7 +197,27 @@ INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `tow
 (2, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
 (3, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 0),
 (4, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000),
-(5, 'Benedict', 'Sanchez', 'coordination', '', 'Cebu', 'Cebu', 'Philippines', 6000);
+(5, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000),
+(6, 'Russel', 'Morquecho', 'student', '', '', '', '', 0),
+(7, 'Malcolm', 'Cada', 'student', '', '', '', '', 0),
+(8, 'Patty', 'Krasner', 'student', '', '', '', '', 0),
+(9, 'Celestina', 'Herbst', 'student', '', '', '', '', 0),
+(10, 'Rufus', 'Benham', 'student', '', '', '', '', 0),
+(11, 'Nestor ', 'Buresh', 'student', '', '', '', '', 0),
+(12, 'Yolande ', 'Lant', 'student', '', '', '', '', 0),
+(13, 'Peg ', 'Girton', 'student', '', '', '', '', 0),
+(14, 'Leigh', 'Piekarski', 'student', '', '', '', '', 0),
+(15, 'Christopher', 'Poll', 'student', '', '', '', '', 0),
+(16, 'Drema', 'Vanscyoc', 'student', '', '', '', '', 0),
+(17, 'Gaylene', 'Durant', 'student', '', '', '', '', 0),
+(18, 'Krysten', 'Cranmer', 'student', '', '', '', '', 0),
+(19, 'Marshall', 'Tittle', 'student', '', '', '', '', 0),
+(20, 'Keesha', 'Bomar', 'student', '', '', '', '', 0),
+(21, 'Lester', 'Hopwood', 'student', '', '', '', '', 0),
+(22, 'Lynette', 'Hornback', 'student', '', '', '', '', 0),
+(23, 'Angelo', 'Ritch', 'student', '', '', '', '', 0),
+(24, 'Margeret', 'Lugo', 'student', '', '', '', '', 0),
+(25, 'Lara', 'Ahmad', 'student', '', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -291,7 +318,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
