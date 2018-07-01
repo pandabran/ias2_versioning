@@ -38,9 +38,9 @@ $qry = mysqli_query($sql,
 
 <body>
 
-  <center>
-      <img src="img/logo.png" class="image">
-  </center>
+  
+    <img src="img/logo.png" class="image">
+  
 
   <div class="wrapper">
 	<div class="container">
