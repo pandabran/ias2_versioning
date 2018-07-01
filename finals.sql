@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 01:00 PM
+-- Generation Time: Jul 01, 2018 at 02:27 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -164,19 +164,23 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `filename` varchar(30) NOT NULL
+  `filename` varchar(30) NOT NULL,
+  `town` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `zipcode` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `email`, `password`, `type`, `filename`) VALUES
-(1, 'Devorah', 'Narvaez', 'devorahnarvaez@gmail.com', 'devqui123', 'teacher_student', ''),
-(2, 'Krizia', 'Lumapas', 'krizialumapas@gmail.com', 'krilum123', 'teacher_student', ''),
-(3, 'Jane', 'Manguiran', 'janemanguiran@gmail.com', 'janman123', 'teacher_student', ''),
-(4, 'Abigail', 'Semilla', 'abigailsemilla@gmail.com', 'abisem123', 'teacher_student', ''),
-(5, 'Benedict', 'Sanchez', 'benedictsanchez@gmail.com', 'bensan123', 'coordination', '');
+INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `email`, `password`, `type`, `filename`, `town`, `city`, `country`, `zipcode`) VALUES
+(1, 'Devorah', 'Narvaez', 'devorahnarvaez@gmail.com', 'devqui123', 'teacher_student', '', 'Talamban', 'Cebu', 'Philippines', 6000),
+(2, 'Krizia', 'Lumapas', 'krizialumapas@gmail.com', 'krilum123', 'teacher_student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
+(3, 'Jane', 'Manguiran', 'janemanguiran@gmail.com', 'janman123', 'teacher_student', '', 'Lilo-an', 'Cebu', 'Philippines', 0),
+(4, 'Abigail', 'Semilla', 'abigailsemilla@gmail.com', 'abisem123', 'teacher_student', '', 'Cebu', 'Cebu', 'Philippines', 0),
+(5, 'Benedict', 'Sanchez', 'benedictsanchez@gmail.com', 'bensan123', 'coordination', '', 'Cebu', 'Cebu', 'Philippines', 0);
 
 --
 -- Indexes for dumped tables
