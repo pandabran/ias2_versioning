@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header("location:index.php");
+  }
+  echo $_SESSION['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +35,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="home.html">
+            <a href="home.php">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
@@ -111,7 +119,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">About</a>
-                  <a class="dropdown-item" href="index.html">Logout</a>
+                  <a class='dropdown-item'>Logout</a>
                 </div>
               </li>
               <li class="nav-item">
