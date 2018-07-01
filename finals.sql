@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2018 at 06:13 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Jul 01, 2018 at 03:54 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `usc_mapeh`
+-- Database: `finals`
 --
 
 -- --------------------------------------------------------
@@ -90,10 +90,20 @@ CREATE TABLE `schedule` (
   `schedule_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
-  `day` varchar(2) NOT NULL,
+  `day` varchar(3) NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `subject_id`, `day`, `start_time`, `end_time`) VALUES
+(1, 1, 1, 'TTh', '07:30:00', '11:30:00'),
+(2, 2, 2, 'MW', '13:00:00', '16:00:00'),
+(3, 3, 3, 'MW', '09:00:00', '12:00:00'),
+(4, 4, 4, 'TTh', '09:00:00', '12:00:00');
 
 -- --------------------------------------------------------
 
@@ -120,6 +130,16 @@ CREATE TABLE `subject` (
   `course_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subject_id`, `course_code`, `course_name`) VALUES
+(1, 'Musc1', 'Music 1'),
+(2, 'Arts11', 'Arts 11'),
+(3, 'PE11', 'Physical Education 11'),
+(4, 'HE11', 'Home Economics 11');
+
 -- --------------------------------------------------------
 
 --
@@ -128,8 +148,20 @@ CREATE TABLE `subject` (
 
 CREATE TABLE `teacher` (
   `teacher_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL
+  `subject_id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`teacher_id`, `subject_id`, `email`, `password`) VALUES
+(1, 1, 'devorahnarvaez@gmail.com', 'devqui123'),
+(2, 2, 'krizialumapas@gmail.com', 'krilum123'),
+(3, 3, 'janemanguiran@gmail.com', 'janman123'),
+(4, 4, 'abigailsemilla@gmail.com', 'abisem123');
 
 -- --------------------------------------------------------
 
@@ -142,8 +174,23 @@ CREATE TABLE `user` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `filename` varchar(30) NOT NULL
+  `filename` varchar(30) NOT NULL,
+  `town` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `zipcode` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`) VALUES
+(1, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000),
+(2, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 0),
+(3, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 0),
+(4, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000),
+(5, 'Benedict', 'Sanchez', 'coordination', '', 'Cebu', 'Cebu', 'Philippines', 6000);
 
 --
 -- Indexes for dumped tables
@@ -232,19 +279,19 @@ ALTER TABLE `lesson_plan`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
