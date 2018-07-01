@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="home.html">
+            <a href="home.php">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>

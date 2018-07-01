@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header("location:index.php");
+  }
+  echo $_SESSION['id'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,12 +36,12 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="home.html">
+            <a href="home.php">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="schedule.html">
               <i class="now-ui-icons ui-1_calendar-60"></i>
               <p>Schedule</p>
@@ -56,7 +65,7 @@
               <p>Notifications</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="user.html">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
@@ -83,7 +92,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">User Profile</a>
+            <a class="navbar-brand" href="#">Schedule</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -131,126 +140,113 @@
       </div>
       <div class="content">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Edit Profile</h5>
+                <h4 class="card-title">
+                    <b>Arts</b>
+                    <br>
+                    <small>School Year 2017 - 2018</small>
+                </h4>
               </div>
               <div class="card-body">
-                <form>
-                  <div class="row">
-                    <div class="col-md-5 pr-1">
-                      <div class="form-group">
-                        <label>Company</label>
-                        <input type="text" class="form-control" disabled="" placeholder="Company" value="University of Saint Charles">
-                      </div>
-                    </div>
-                    <div class="col-md-3 px-1">
-                      <div class="form-group">
-                        <label>Identification Card</label>
-                        <input type="text" class="form-control" disabled="" placeholder="ID" value="15100256">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" placeholder="Email">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" value="Krizia">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="Lumapas">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Lapu-Lapu City">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" placeholder="City" value="Cebu">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Philippines">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Postal Code</label>
-                        <input type="number" class="form-control" placeholder="ZIP Code">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                          <label>Subject</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Subject" value="Arts, Liberal Science (char lang hahaha)">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group text-center">
-                          <button class="btn btn-neutral btn-lg">Save</button>
-                        </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-user">
-              <div class="image">
-                <img src="img/bg.jpg">
-              </div>
-              <div class="card-body">
-                <div class="author">
-                  <a href="#">
-                    <img class="avatar border-gray" src="img/profile.png">
-                    <h5 class="title">Krizia Lumapas</h5>
-                  </a>
-                  <p class="description">
-                    15100256
-                  </p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Time</th>
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wednesday</th>
+                      <th>Thursday</th>
+                      <th>Friday</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>7:30-8:00</td>
+                        <td>Flag</td>
+                        <td>Flag</td>
+                        <td>Flag</td>
+                        <td>Flag</td>
+                        <td>Flag</td>
+                      </tr>
+                      <tr>
+                        <td>8:00 - 9:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>9:00 - 10:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>10:00 - 10:30</td>
+                        <td>Snacks</td>
+                        <td>Snacks</td>
+                        <td>Snacks</td>
+                        <td>Snacks</td>
+                        <td>Snacks</td>
+                      </tr>
+                      <tr>
+                        <td>10:30 - 11:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>11:00 - 12:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>12:00 - 1:00</td>
+                        <td>Lunch</td>
+                        <td>Lunch</td>
+                        <td>Lunch</td>
+                        <td>Lunch</td>
+                        <td>Lunch</td>
+                      </tr>
+                      <tr>
+                        <td>1:00 - 2:00</td>
+                        <td>6-Joy</td>
+                        <td></td>
+                        <td>6-Hope</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>2:00 - 3:00</td>
+                        <td>6-Faith</td>
+                        <td></td>
+                        <td>6-Love</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>3:00 - 4:00</td>
+                        <td>Evaluation</td>
+                        <td>Evaluation</td>
+                        <td>Evaluation</td>
+                        <td>Evaluation</td>
+                        <td>Evaluation</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <p class="description text-center">
-                  Arts Teacher
-                </p>
-              </div>
-              <hr>
-              <div class="button-container">
-                <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-                  <i class="now-ui-icons business_badge"></i>
-                </button>
-                <button href="#" class="btn btn-neutral btn-icon btn-lg">
-                  USC
-                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
   <!--   Core JS Files   -->
   <script src="js/core/jquery.min.js"></script>
   <script src="js/core/popper.min.js"></script>

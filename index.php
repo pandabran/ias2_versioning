@@ -7,13 +7,13 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $qry = mysqli_query($sql,
-	"SELECT * FROM teacher WHERE email = '".$email."'AND password='".$password."'");
+	"SELECT * FROM user WHERE firstname = '".$email."'AND city='".$password."'");
 	if($qry){
 		$x = mysqli_num_rows($qry);
 		if($x==1){
 			$id = mysqli_fetch_row($qry);
 			session_start();
-			$_SESSION['id']=$id[0];
+			$_SESSION['user_id']=$id[0];
 			header("location:home.php");
 		}
 	}
@@ -47,7 +47,7 @@ $qry = mysqli_query($sql,
 		<h1>Welcome</h1>
 
 		<form class="form" method="POST" action='index.php' autocomplete="off">
-			<input name="email"  required='required' type="text" placeholder="Username">
+			<input name="email"  required='required' type="text" placeholder="Email">
 			<input name="password" required='required' type="password" placeholder="Password">
 			<button id="login-button">Login</button>
 		</form>
