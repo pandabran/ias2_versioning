@@ -230,3 +230,7 @@ form button:hover {
     display: block;
     margin-top: 2%;
 }
+
+.navbar{
+  margin-top:0%;
+}
