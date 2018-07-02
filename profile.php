@@ -6,12 +6,9 @@ if(!isset($_SESSION['id'])){
   header("location:index.php");
 }
 $query = mysqli_query($sql, "SELECT * FROM user WHERE user_id =".$_SESSION['id']);
-$query2 = mysqli_query($sql, "SELECT teacher.teacher_id, subject.subject_id, user.user_id, subject.course_name FROM teacher
-JOIN user ON user.user_id = teacher.teacher_id
-JOIN subject ON subject.subject_id = teacher.subject_id");
 $row = mysqli_fetch_row($query);
+$query2 = mysqli_query($sql, "SELECT teacher.teacher_id, subject.subject_id, subject.course_name FROM teacher JOIN subject ON teacher.subject_id = subject.subject_id WHERE teacher.teacher_id = ".$_SESSION['id']);
 $row2 = mysqli_fetch_row($query2);
-
 ?>
 
 <!DOCTYPE html>
@@ -251,7 +248,7 @@ $row2 = mysqli_fetch_row($query2);
                   </p>
                 </div>
                 <p class="description text-center">
-                  <?php echo $row2[3];?>
+                  <?php echo $row2[2];?>
                 </p>
               </div>
               <hr>
