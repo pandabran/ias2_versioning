@@ -1,9 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['id'])){
-    header("location:index.php");
-  }
-  echo $_SESSION['id'];
+// session_start();
+// if(!isset($_SESSION['id'])){
+//     header("location:index.php");
+//   }
+//   echo $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -41,37 +41,37 @@ if(!isset($_SESSION['id'])){
             </a>
           </li>
           <li>
-            <a href="schedule.html">
+            <a href="schedule.php">
               <i class="now-ui-icons ui-1_calendar-60"></i>
               <p>Schedule</p>
             </a>
           </li>
           <li>
-            <a href="lesson.html">
+            <a href="lesson.php">
               <i class="now-ui-icons education_agenda-bookmark"></i>
               <p>Lesson Plan</p>
             </a>
           </li>
           <li>
-            <a href="grades.html">
+            <a href="grades.php">
               <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>Grades</p>
             </a>
           </li>
           <li>
-            <a href="notifications.html">
+            <a href="notifications.php">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li>
-            <a href="user.html">
+            <a href="user.php">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-            <a href="list.html">
+            <a href="list.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Class List</p>
             </a>
@@ -123,7 +123,7 @@ if(!isset($_SESSION['id'])){
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="user.html">
+                <a class="nav-link" href="user.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
@@ -139,167 +139,19 @@ if(!isset($_SESSION['id'])){
       </div>
       <div class="content">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-7">
             <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Schedule</h5>
-                <h4 class="card-title">School Year 2017-2018</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Update Schedule</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExample"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category"> Plan</h5>
-                <h4 class="card-title">Current Lesson Plan</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="lesson.html">Create New Lesson Plan</a>
-                    <a class="dropdown-item" href="lesson.html">Edit Current Lesson Plan</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Grades</h5>
-                <h4 class="card-title">Student Performance</h4>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card  card-tasks">
-              <div class="card-header ">
-                <h5 class="card-category">To do list</h5>
-                <h4 class="card-title">Tasks</h4>
-              </div>
-              <div class="card-body ">
-                <div class="table-full-width table-responsive">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-
-                        <td class="text-left">Make a new lesson plan</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox">
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-
-                        <td class="text-left">2:30 Conference Meeting at AVR</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-
-                        <td class="text-left">Pass grades to coordinator
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card">
               <div class="card-header">
                 <h5 class="card-category">Class List</h5>
-                <h4 class="card-title"> Student Grades</h4>
+                <h4 class="card-title">Student Grades</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="grades.php">Edit Grades</a>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -312,13 +164,141 @@ if(!isset($_SESSION['id'])){
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Sample</td>
-                        <td>6</td>
-                        <td>Joy</td>
+                        <td>Russel Morquecho</td>
+                        <td>1</td>
+                        <td>Humility</td>
                         <td class="text-right">90</td>
+                      </tr>
+                      <tr>
+                        <td>Malcolm Cada</td>
+                        <td>1</td>
+                        <td>Humility</td>
+                        <td class="text-right">91</td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category"> Plan</h5>
+                <h4 class="card-title">Lesson Plan Status</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="lesson.php">Create New Lesson Plan</a>
+                    <a class="dropdown-item" href="lesson.php">Edit Current Lesson Plan</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Date</th>
+                      <th>Venue</th>
+                      <th>Status</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2018-06-11</td>
+                        <td>Quadrangle</td>
+                        <td>
+                          <div class="alert alert-success">
+                            <button type="button" aria-hidden="true" class="close">
+                              <i class="now-ui-icons ui-1_check"></i>
+                            </button>
+                            <span>Approved</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2018-06-13</td>
+                        <td>Quadrangle</td>
+                        <td>
+                          <div class="alert alert-warning">
+                            <button type="button" aria-hidden="true" class="close">
+                              <i class="now-ui-icons loader_refresh"></i>
+                            </button>
+                            <span>Pending</span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">Schedule</h5>
+                <h4 class="card-title"> School Year 2017-2018</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wednesday</th>
+                      <th>Thursday</th>
+                      <th>Friday</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>6-Joy</td>
+                        <td></td>
+                        <td>6-Hope</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>6-Faith</td>
+                        <td></td>
+                        <td>6-Love</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Grades</h5>
+                <h4 class="card-title">Student Performance</h4>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
                 </div>
               </div>
             </div>

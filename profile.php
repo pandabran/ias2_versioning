@@ -1,14 +1,14 @@
 <?php
-require("connector.php");
-session_start();
+// require("connector.php");
+// session_start();
 
-if(!isset($_SESSION['id'])){
-  header("location:index.php");
-}
-$query = mysqli_query($sql, "SELECT * FROM user WHERE user_id =".$_SESSION['id']);
-$row = mysqli_fetch_row($query);
-$query2 = mysqli_query($sql, "SELECT teacher.teacher_id, subject.subject_id, subject.course_name FROM teacher JOIN subject ON teacher.subject_id = subject.subject_id WHERE teacher.teacher_id = ".$_SESSION['id']);
-$row2 = mysqli_fetch_row($query2);
+// if(!isset($_SESSION['id'])){
+//   header("location:index.php");
+// }
+// $query = mysqli_query($sql, "SELECT * FROM user WHERE user_id =".$_SESSION['id']);
+// $row = mysqli_fetch_row($query);
+// $query2 = mysqli_query($sql, "SELECT teacher.teacher_id, subject.subject_id, subject.course_name FROM teacher JOIN subject ON teacher.subject_id = subject.subject_id WHERE teacher.teacher_id = ".$_SESSION['id']);
+// $row2 = mysqli_fetch_row($query2);
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +128,7 @@ $row2 = mysqli_fetch_row($query2);
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="user.html">
+                <a class="nav-link" href="user.php">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>

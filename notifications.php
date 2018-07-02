@@ -51,7 +51,7 @@
               <p>Grades</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="notifications.php">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
@@ -63,7 +63,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="list.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Class List</p>
@@ -84,7 +84,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Class List</a>
+            <a class="navbar-brand" href="#">Notifications</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -128,33 +128,43 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="panel-header panel-header-sm">
+      <div class="panel-header">
+        <div class="header text-center">
+          <h2 class="title">Notifications</h2>
+        </div>
       </div>
       <div class="content">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> List of Students</h4>
-              </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>Year </th>
-                      <th>Section</th>
-                      <th class="text-right">General Average</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>6</td>
-                        <td>Joy</td>
-                        <td class="text-right">90</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="alert alert-info alert-with-icon" data-notify="container">
+                  <button type="button" aria-hidden="true" class="close">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                  <span data-notify="icon" class="now-ui-icons travel_info"></span>
+                  <span data-notify="message">Upcoming meeting with the coordinator on July 3, 2018 (Tuesday)</span>
+                </div>
+                <div class="alert alert-info alert-with-icon" data-notify="container">
+                  <button type="button" aria-hidden="true" class="close">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                  <span data-notify="icon" class="now-ui-icons travel_info"></span>
+                  <span data-notify="message">School Fair starts on July 7, 2018 (Saturday)</span>
+                </div>
+                <div class="alert alert-success alert-with-icon" data-notify="container">
+                  <button type="button" aria-hidden="true" class="close">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                  <span data-notify="icon" class="now-ui-icons ui-2_like"></span>
+                  <span data-notify="message">Account has been verified</span>
+                </div>
+                <div class="alert alert-danger alert-with-icon" data-notify="container">
+                  <button type="button" aria-hidden="true" class="close">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                  <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                  <span data-notify="message">Pass Lesson Plan ASAP</span>
                 </div>
               </div>
             </div>

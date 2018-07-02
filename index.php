@@ -15,6 +15,8 @@ $qry = mysqli_query($sql,
 			session_start();
 			$_SESSION['user_id']=$id[0];
 			header("location:home.php");
+		}else{
+			echo "cant log n";
 		}
 	}
 
@@ -47,7 +49,7 @@ $qry = mysqli_query($sql,
 		<h1>Welcome</h1>
 
 		<form class="form" method="POST" action='index.php' autocomplete="off">
-			<input name="email"  required='required' type="text" placeholder="Email">
+			<input name="email"  required='required' type="email" placeholder="Email">
 			<input name="password" required='required' type="password" placeholder="Password">
 			<button id="login-button">Login</button>
 		</form>

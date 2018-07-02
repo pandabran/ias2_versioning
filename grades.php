@@ -1,3 +1,11 @@
+<?php
+// session_start();
+// if(!isset($_SESSION['id'])){
+//     header("location:index.php");
+//   }
+//   echo $_SESSION['id'];
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +53,7 @@
               <p>Lesson Plan</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="grades.php">
               <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>Grades</p>
@@ -63,7 +71,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="list.php">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Class List</p>
@@ -84,7 +92,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Class List</a>
+            <a class="navbar-brand" href="#">Grades</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -135,26 +143,65 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> List of Students</h4>
+                <h4 class="card-title">
+                    <b>Arts</b>
+                    <br>
+                    <small>School Year 2017 - 2018 </small>
+                </h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>Year </th>
-                      <th>Section</th>
-                      <th class="text-right">General Average</th>
+                      <th>Student Name</th>
+                      <th>Activity Date</th>
+                      <th>Grade</th>
+                      <th>Activity Date</th>
+                      <th>Grade</th>
+                      <th class="text-right">Final Grade</th>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Sample</td>
-                        <td>6</td>
-                        <td>Joy</td>
+                        <td>Russel Morquecho</td>
+                        <td>2018-06-11</td>
+                        <td>
+                          <div class="col-md-3 px-1">
+                            <input type="text" class="form-control" value="91">
+                          </div>
+                        </td>
+                        <td>2018-06-13</td>
+                        <td>
+                          <div class="col-md-3 px-1">
+                            <input type="text" class="form-control" value="89">
+                          </div>
+                        </td>
                         <td class="text-right">90</td>
+                      </tr>
+                      <tr>
+                        <td>Malcolm Cada</td>
+                        <td>2018-06-11</td>
+                        <td>
+                          <div class="col-md-3 px-1">
+                            <input type="text" class="form-control" value="90">
+                          </div>
+                        </td>
+                        <td>2018-06-13</td>
+                        <td>
+                          <div class="col-md-3 px-1">
+                            <input type="text" class="form-control" value="91">
+                          </div>
+                        </td>
+                        <td class="text-right">91</td>
                       </tr>
                     </tbody>
                   </table>
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group text-center">
+                          <button class="btn btn-neutral btn-lg">Save</button>
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
