@@ -13,7 +13,7 @@ $qry = mysqli_query($sql,
 		if($x==1){
 			$id = mysqli_fetch_row($qry);
 			session_start();
-			$_SESSION['user_id']=$id[0];
+			$_SESSION['id']=$id[0];
 			header("location:home.php");
 		}else{
 			echo "cant log n";

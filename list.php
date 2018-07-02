@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header("location:index.php");
+  }
+  echo var_dump($_SESSION['id']);
+require("connector.php");
+$qry = mysqli_query($sql,
+  "SELECT firstname,lastname,year,section,gwa FROM user JOIN student on user.user_id = student.student_id left join grade on student.student_id = grade.student_id where user.type='student'");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,12 +157,17 @@
                       <th class="text-right">General Average</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>6</td>
-                        <td>Joy</td>
-                        <td class="text-right">90</td>
-                      </tr>
+                      <?php 
+                        while ($row = mysqli_fetch_array($qry)) {
+                          echo "<tr>";
+                          echo "<td>".$row[0]." ".$row[1]."</td>";
+                          echo "<td align='center'>".$row[2]."</td>";
+                          echo "<td align='center'>".$row[3]."</td>";
+                          echo "<td class='text-right'>".$row[4]."</td>";
+                          echo "</tr>";
+                        }
+                        
+                      ?>
                     </tbody>
                   </table>
                 </div>

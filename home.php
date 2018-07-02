@@ -1,9 +1,15 @@
 <?php
-// session_start();
-// if(!isset($_SESSION['id'])){
-//     header("location:index.php");
-//   }
-//   echo $_SESSION['id'];
+session_start();
+if(!isset($_SESSION['id'])){
+    header("location:index.php");
+  }
+  echo var_dump($_SESSION['id']);
+
+require("connector.php");
+$qry = mysqli_query($sql,
+  "SELECT firstname,lastname,year,section,gwa FROM user JOIN student on user.user_id = student.student_id left join grade on student.student_id = grade.student_id where user.type='student'");
+$qry1 = mysqli_query($sql,
+  "SELECT lesson_plan.date_of_plan,venue,is_approved FROM `lesson_plan` Join subject on lesson_plan.subject_id = subject.subject_id join teacher on subject.subject_id = teacher.subject_id JOIN user on teacher.teacher_id= user.user_id WHERE user.user_id=".$_SESSION['id']);
 ?>
 
 <!DOCTYPE html>
@@ -163,7 +169,20 @@
                       <th class="text-right">General Average</th>
                     </thead>
                     <tbody>
-                      <tr>
+
+                      <?php 
+                        while ($row = mysqli_fetch_array($qry)) {
+                          echo "<tr>";
+                          echo "<td>".$row[0]." ".$row[1]."</td>";
+                          echo "<td align='center'>".$row[2]."</td>";
+                          echo "<td align='center'>".$row[3]."</td>";
+                          echo "<td align='center'>".$row[4]."</td>";
+                          echo "</tr>";
+                        }
+                        
+                      ?>
+                    <!--   <tr>
+                        
                         <td>Russel Morquecho</td>
                         <td>1</td>
                         <td>Humility</td>
@@ -174,7 +193,7 @@
                         <td>1</td>
                         <td>Humility</td>
                         <td class="text-right">91</td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </div>
@@ -210,7 +229,30 @@
                       <th>Status</th>
                     </thead>
                     <tbody>
-                      <tr>
+                    <?php
+                    while ($row1 = mysqli_fetch_array($qry1)) {
+                          echo "<tr>";
+                          echo "<td>".$row1[0]."</td>";
+                          echo "<td align='center'>".$row1[1]."</td>";
+                          if($row1[2]=='1'){
+                            echo "<td><div class='alert alert-success'>";
+                            echo "<button type='button' aria-hidden='true' class='close'>";
+                            echo "<i class='now-ui-icons ui-1_check'></i>";
+                            echo "</button>";
+                            echo "<span>Approved</span></div></td>";   
+                          }else{
+                            echo "<td><div class='alert alert-warning'>";
+                            echo "<button type='button' aria-hidden='true' class='close'>";
+                            echo "<i class='now-ui-icons loader_refresh'></i>";
+                            echo "</button>";
+                            echo "<span>Pending</span></div></td>";
+
+                          }
+                          echo "</tr>";
+                        }
+
+                    ?>
+                      <!-- <tr>
                         <td>2018-06-11</td>
                         <td>Quadrangle</td>
                         <td>
@@ -233,7 +275,7 @@
                             <span>Pending</span>
                           </div>
                         </td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </div>
