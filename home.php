@@ -152,7 +152,7 @@ $qry1 = mysqli_query($sql,
                 <h4 class="card-title">Student Grades</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
+                    <i class="now-ui-icons ui-2_settings-90"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="grades.php">Edit Grades</a>
@@ -169,7 +169,6 @@ $qry1 = mysqli_query($sql,
                       <th class="text-right">General Average</th>
                     </thead>
                     <tbody>
-
                       <?php 
                         while ($row = mysqli_fetch_array($qry)) {
                           echo "<tr>";
@@ -181,19 +180,6 @@ $qry1 = mysqli_query($sql,
                         }
                         
                       ?>
-                    <!--   <tr>
-                        
-                        <td>Russel Morquecho</td>
-                        <td>1</td>
-                        <td>Humility</td>
-                        <td class="text-right">90</td>
-                      </tr>
-                      <tr>
-                        <td>Malcolm Cada</td>
-                        <td>1</td>
-                        <td>Humility</td>
-                        <td class="text-right">91</td>
-                      </tr> -->
                     </tbody>
                   </table>
                 </div>
@@ -209,14 +195,13 @@ $qry1 = mysqli_query($sql,
             <div class="card card-chart">
               <div class="card-header">
                 <h5 class="card-category"> Plan</h5>
-                <h4 class="card-title">Lesson Plan Status</h4>
+                <h4 class="card-title">Lesson Plan</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
+                    <i class="now-ui-icons ui-2_settings-90"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="lesson.php">Create New Lesson Plan</a>
-                    <a class="dropdown-item" href="lesson.php">Edit Current Lesson Plan</a>
                   </div>
                 </div>
               </div>
@@ -226,56 +211,33 @@ $qry1 = mysqli_query($sql,
                     <thead class=" text-primary">
                       <th>Date</th>
                       <th>Venue</th>
-                      <th>Status</th>
+                      <th></th>
                     </thead>
                     <tbody>
-                    <?php
-                    while ($row1 = mysqli_fetch_array($qry1)) {
-                          echo "<tr>";
-                          echo "<td>".$row1[0]."</td>";
-                          echo "<td align='center'>".$row1[1]."</td>";
-                          if($row1[2]=='1'){
-                            echo "<td><div class='alert alert-success'>";
-                            echo "<button type='button' aria-hidden='true' class='close'>";
-                            echo "<i class='now-ui-icons ui-1_check'></i>";
-                            echo "</button>";
-                            echo "<span>Approved</span></div></td>";   
-                          }else{
-                            echo "<td><div class='alert alert-warning'>";
-                            echo "<button type='button' aria-hidden='true' class='close'>";
-                            echo "<i class='now-ui-icons loader_refresh'></i>";
-                            echo "</button>";
-                            echo "<span>Pending</span></div></td>";
-
-                          }
-                          echo "</tr>";
-                        }
-
-                    ?>
-                      <!-- <tr>
-                        <td>2018-06-11</td>
+                      <tr>
+                        <td>7/3/2018</td>
                         <td>Quadrangle</td>
-                        <td>
-                          <div class="alert alert-success">
-                            <button type="button" aria-hidden="true" class="close">
-                              <i class="now-ui-icons ui-1_check"></i>
-                            </button>
-                            <span>Approved</span>
-                          </div>
+                        <td class="text-right">
+                          <a href="lesson.php"><button type="button" aria-hidden="true" class="btn btn-warning">
+                            <i class="now-ui-icons loader_gear"></i>
+                          </button></a>
+                          <button type="button" aria-hidden="true" class="btn btn-danger" onclick="demo.showNotification('top','right')">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                          </button>
                         </td>
                       </tr>
                       <tr>
-                        <td>2018-06-13</td>
+                        <td>7/3/2018</td>
                         <td>Quadrangle</td>
-                        <td>
-                          <div class="alert alert-warning">
-                            <button type="button" aria-hidden="true" class="close">
-                              <i class="now-ui-icons loader_refresh"></i>
-                            </button>
-                            <span>Pending</span>
-                          </div>
+                        <td class="text-right">
+                          <a href="lesson.php"><button type="button" aria-hidden="true" class="btn btn-warning">
+                            <i class="now-ui-icons loader_gear"></i>
+                          </button></a>
+                          <button type="button" aria-hidden="true" class="btn btn-danger" onclick="demo.showNotification('top','right')">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                          </button>
                         </td>
-                      </tr> -->
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -286,10 +248,23 @@ $qry1 = mysqli_query($sql,
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-7">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Grades</h5>
+                <h4 class="card-title">Student Performance</h4>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                </div>
+              </div>
+            </div>
             <div class="card">
               <div class="card-header">
                 <h5 class="card-category">Schedule</h5>
@@ -326,29 +301,12 @@ $qry1 = mysqli_query($sql,
               </div>
             </div>
           </div>
-          <div class="col-lg-5 col-md-6">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-category">Grades</h5>
-                <h4 class="card-title">Student Performance</h4>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="js/javascript.js"></script>
   <!--   Core JS Files   -->
   <script src="js/core/jquery.min.js"></script>
   <script src="js/core/popper.min.js"></script>

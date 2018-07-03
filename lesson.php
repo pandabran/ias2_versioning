@@ -144,97 +144,84 @@ if(!isset($_SESSION['id'])){
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                    <b>Arts</b>
+                    <b>Lesson Plan for Arts</b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
                 </h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Date of Plan</th>
-                      <th>Lesson Outline</th>
-                      <th>Objectives</th>
-                      <th>Instruction</th>
-                      <th>Motivation</th>
-                      <th>Materials</th>
-                      <th class="text-center">Status</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="col-md-11 px-1">
-                            <input type="date" class="form-control">
-                          </div>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">This visual arts lesson will allow students to get creative while practicing with either photography or videography. Students will also have to consider perspective from things outside themselves. Rubric included
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">The learners will create a photo array with narrative or a short video with sound sharing the perspective of an inanimate object. Students will be expected to be creative in both the verbal and artistic areas of the assignment.
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">Students will choose an inanimate object in the building or at their home to photograph or use for the video project. The first shot will be of the actual object, but all other photos or video shots will be from the perspective of the object. Additionally, commentary will be offered about how the object may think about the world.
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">Ask students to think about the world from that perspective for a moment. Now have students think about the world if they could only see from that position they are in, all day, every day, in the same spot. Students with the best shot will be exhibited in the mural.
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">Cameras or video cameras for each student.Computers/printers for completion of the project (any appropriate video sharing platform or photo sharing program should work)
-                          </textarea>
-                        </td>
-                        <td class="text-center">
-                          <div class="alert alert-success">
-                            <span>Approved</span>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="col-md-11 px-1">
-                            <input type="date" class="form-control">
-                          </div>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">This lesson will allow students to practice creating art from a unique perspective while learning about Michelangelo.
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">
-                          </textarea>
-                        </td>
-                        <td>
-                          <textarea rows="4" class="form-control">
-                          </textarea>
-                        </td>
-                        <td class="text-center">
-                          <div class="alert alert-warning">
-                            <span>Pending</span>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <form>
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Date of Plan</label>
+                        <input type="date" class="form-control" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Venue</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                      <div class="form-check">
+                          <label class="form-check-label text-primary">
+                            Status
+                            <input class="form-check-input" disabled="" type="checkbox" checked>
+                            <span class="form-check-sign"></span>
+                          </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Lesson Outline</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Objectives</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Instructions</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Motivation</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Materials</label>
+                        <input type="text" class="form-control" value="">
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
                       <div class="col-md-12">
                         <div class="form-group text-center">
-                          <button class="btn btn-neutral btn-lg">Submit</button>
+                          <button type="submit" class="btn btn-warning btn-lg">Submit</button>
                         </div>
                     </div>
                   </div>
+                </form>
                 </div>
               </div>
             </div>

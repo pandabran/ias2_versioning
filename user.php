@@ -219,7 +219,7 @@
                   <div class="row">
                       <div class="col-md-12">
                         <div class="form-group text-center">
-                          <button class="btn btn-neutral btn-lg">Save</button>
+                          <button type="submit" class="btn btn-warning btn-lg">Save</button>
                         </div>
                     </div>
                   </div>
