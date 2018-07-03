@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 06:32 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jul 03, 2018 at 01:45 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tst`
+-- Database: `finals`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `activity` (
   `activity_id` int(11) NOT NULL,
   `plan_id` int(11) NOT NULL,
-  `grade` float(3,2) NOT NULL
+  `grade` float(3,2) NOT NULL,
+  `grade_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
