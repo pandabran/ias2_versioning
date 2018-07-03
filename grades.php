@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location:index.php");
   }
-  echo $_SESSION['id'];
+
 
   // $qry = mysqli_query($sql,
   // "SELECT * FROM user WHERE email = '".$email."'AND password='".$password."'");

@@ -3,13 +3,14 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location:index.php");
   }
-  echo var_dump($_SESSION['id']);
+
 
 require("connector.php");
 $qry = mysqli_query($sql,
   "SELECT firstname,lastname,year,section,gwa FROM user JOIN student on user.user_id = student.student_id left join grade on student.student_id = grade.student_id where user.type='student'");
 $qry1 = mysqli_query($sql,
-  "SELECT lesson_plan.date_of_plan,venue,is_approved FROM `lesson_plan` Join subject on lesson_plan.subject_id = subject.subject_id join teacher on subject.subject_id = teacher.subject_id JOIN user on teacher.teacher_id= user.user_id WHERE user.user_id=".$_SESSION['id']);
+  "SELECT lesson_plan.date_of_plan,venue,lesson_plan.plan_id FROM `lesson_plan` Join subject on lesson_plan.subject_id = subject.subject_id join teacher on subject.subject_id = teacher.subject_id JOIN user on teacher.teacher_id= user.user_id WHERE user.user_id=".$_SESSION['id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -170,6 +171,7 @@ $qry1 = mysqli_query($sql,
                     </thead>
                     <tbody>
                       <?php 
+
                         while ($row = mysqli_fetch_array($qry)) {
                           echo "<tr>";
                           echo "<td>".$row[0]." ".$row[1]."</td>";
@@ -214,7 +216,24 @@ $qry1 = mysqli_query($sql,
                       <th></th>
                     </thead>
                     <tbody>
-                      <tr>
+                      <?php 
+ 
+                        while ($row1 = mysqli_fetch_array($qry1)) {
+                          echo "<tr>";
+                          echo "<td>".$row1[0]."</td>";
+                          echo "<td align='center'>".$row1[1]."</td>";
+                          echo "<td class='text-right'>";
+                          echo "<a href='lessonUpdate.php?pid=".$row1[2]."'><button type='button' aria-hidden='true' class='btn btn-warning'>";
+                          echo "<i class='now-ui-icons loader_gear'></i>";
+                          echo "</button></a>";
+                          echo "<a href='lessonDelete.php?pid=".$row1[2]."'><button type='button' aria-hidden='true' class='btn btn-danger' onclick='demo.showNotification('top','right')''>";
+                            echo "<i class='now-ui-icons ui-1_simple-remove'></i></button></a></td>";
+                      
+                          echo "</tr>";
+                        }
+                          
+                        ?>
+                      <!-- <tr>
                         <td>7/3/2018</td>
                         <td>Quadrangle</td>
                         <td class="text-right">
@@ -238,6 +257,9 @@ $qry1 = mysqli_query($sql,
                           </button>
                         </td>
                       </tr>
+                      
+                        -->
+
                     </tbody>
                   </table>
                 </div>

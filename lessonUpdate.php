@@ -1,8 +1,13 @@
 <?php
+require("connector.php");
 session_start();
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['id']) && !isset($_GET['pid'])){
     header("location:index.php");
   }
+ 
+$qry = mysqli_query($sql,"SELECT date_of_plan,venue,lesson_outline,objectives,instruction,motivation,materials FROM lesson_plan WHERE plan_id=".$_GET['pid']);
+$row = mysqli_fetch_row($qry);
+
 
 ?>
 
@@ -41,13 +46,13 @@ if(!isset($_SESSION['id'])){
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="schedule.php">
               <i class="now-ui-icons ui-1_calendar-60"></i>
               <p>Schedule</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="lesson.php">
               <i class="now-ui-icons education_agenda-bookmark"></i>
               <p>Lesson Plan</p>
@@ -92,7 +97,7 @@ if(!isset($_SESSION['id'])){
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Schedule</a>
+            <a class="navbar-brand" href="#">Lesson Plan</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -144,105 +149,85 @@ if(!isset($_SESSION['id'])){
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                    <b>Arts</b>
+                    <b>Lesson Plan for Arts</b>
                     <br>
-                    <small>School Year 2017 - 2018</small>
+                    <small>School Year 2017 - 2018 </small>
                 </h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Time</th>
-                      <th>Monday</th>
-                      <th>Tuesday</th>
-                      <th>Wednesday</th>
-                      <th>Thursday</th>
-                      <th>Friday</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>7:30-8:00</td>
-                        <td>Flag</td>
-                        <td>Flag</td>
-                        <td>Flag</td>
-                        <td>Flag</td>
-                        <td>Flag</td>
-                      </tr>
-                      <tr>
-                        <td>8:00 - 9:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>9:00 - 10:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>10:00 - 10:30</td>
-                        <td>Snacks</td>
-                        <td>Snacks</td>
-                        <td>Snacks</td>
-                        <td>Snacks</td>
-                        <td>Snacks</td>
-                      </tr>
-                      <tr>
-                        <td>10:30 - 11:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>11:00 - 12:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>12:00 - 1:00</td>
-                        <td>Lunch</td>
-                        <td>Lunch</td>
-                        <td>Lunch</td>
-                        <td>Lunch</td>
-                        <td>Lunch</td>
-                      </tr>
-                      <tr>
-                        <td>1:00 - 2:00</td>
-                        <td>6-Joy</td>
-                        <td></td>
-                        <td>6-Hope</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>2:00 - 3:00</td>
-                        <td>6-Faith</td>
-                        <td></td>
-                        <td>6-Love</td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>3:00 - 4:00</td>
-                        <td>Evaluation</td>
-                        <td>Evaluation</td>
-                        <td>Evaluation</td>
-                        <td>Evaluation</td>
-                        <td>Evaluation</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <form method="POST" action="lessonUpdate2.php">
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Date of Plan</label>
+                        <?php echo"<input name='dop' type='text' class='form-control' value='".$row[0]."'>"; ?>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Venue</label>
+                        <?php echo"<input name='venue' type='text' class='form-control' value='".$row[1]."'>"; ?>
+                      </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                      <div class="form-check">
+                          <label class="form-check-label text-primary">
+                            Status
+                            <input class="form-check-input" disabled="" type="checkbox" checked>
+                            <span class="form-check-sign"></span>
+                          </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Lesson Outline</label>
+                        <?php echo"<input name='planid' type='hidden'  class='form-control' value='".$_GET['pid']."'>"; ?>
+                        <?php echo"<input name='lessonout' type='text'  class='form-control' value='".$row[2]."'>"; ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Objectives</label>
+                        <?php echo"<input name='objectives' type='text' class='form-control' value='".$row[3]."'>"; ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Instructions</label>
+                        <?php echo"<input name='instruction' type='text' class='form-control' value='".$row[4]."'>"; ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Motivation</label>
+                        <?php echo"<input name='motivation' type='text' class='form-control' value='".$row[5]."'>"; ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class=" text-primary">Materials</label>
+                        <?php echo"<input name='materials' type='text' class='form-control' value='".$row[6]."'>"; ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group text-center">
+                          <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
                 </div>
               </div>
             </div>

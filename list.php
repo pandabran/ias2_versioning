@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location:index.php");
   }
-  echo var_dump($_SESSION['id']);
+
 require("connector.php");
 $qry = mysqli_query($sql,
   "SELECT firstname,lastname,year,section,gwa FROM user JOIN student on user.user_id = student.student_id left join grade on student.student_id = grade.student_id where user.type='student'");
