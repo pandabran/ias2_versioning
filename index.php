@@ -1,13 +1,13 @@
 <?php
 require("connector.php");
-if(isset($_POST['email']) && isset($_POST['password'])){
+if(isset($_POST['user_id']) && isset($_POST['password'])){
 
 
-$email = $_POST['email'];
+$user_id = $_POST['user_id'];
 $password = $_POST['password'];
 
 $qry = mysqli_query($sql,
-	"SELECT * FROM user WHERE email = '".$email."'AND password='".$password."'");
+	"SELECT * FROM user WHERE user_id = '".$user_id."'AND password='".$password."'");
 	if($qry){
 		$x = mysqli_num_rows($qry);
 		if($x==1){
@@ -49,7 +49,7 @@ $qry = mysqli_query($sql,
 		<h1>Welcome</h1>
 
 		<form class="form" method="POST" action='index.php' autocomplete="off">
-			<input name="email"  required='required' type="email" placeholder="Email">
+			<input name="user_id"  required='required' type="text" placeholder="ID">
 			<input name="password" required='required' type="password" placeholder="Password">
 			<button id="login-button">Login</button>
 		</form>
