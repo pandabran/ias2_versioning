@@ -152,16 +152,25 @@ if(!isset($_SESSION['id'])){
               <div class="card-body">
                 <form id='add-lesson' action="addLessonPlan.php" method="POST">
                   <div class="row">
-                    <div class="col-md-4 pr-1">
+                    <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Date of Plan</label>
-                        <input type="date"  name="date" class="form-control" value="">
+                        <input type="date"  name="date" class="form-control" value="" required>
                       </div>
                     </div>
-                    <div class="col-md-6 pr-1">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Schedule</label>
+                        <select class="form-control">
+                          <option class="dropdown" value="">MW 9:00-12:00</option>
+                          <option class="dropdown" value="">MW 1:00-4:00</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Venue</label>
-                        <input type="text" name="venue" class="form-control" value="">
+                        <input type="text" name="venue" class="form-control" value="" required>
                       </div>
                     </div>
                     <div class="col-md-1 pr-1">
@@ -178,7 +187,8 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Lesson Outline</label>
-                        <input type="text" name="lessonOutline" class="form-control" value="">
+                        <textarea name="lessonOutline" class="form-control" value="" required>
+                        </textarea>
                       </div>
                     </div>
                   </div>
@@ -186,7 +196,8 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Objectives</label>
-                        <input type="text" name="obj" class="form-control" value="">
+                        <textarea name="obj" class="form-control" value="" required>
+                        </textarea>
                       </div>
                     </div>
                   </div>
@@ -194,7 +205,8 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Instructions</label>
-                        <input type="text" name="instructions" class="form-control" value="">
+                        <textarea rows="4" name="instructions" class="form-control" value="" required>
+                        </textarea>
                       </div>
                     </div>
                   </div>
@@ -202,7 +214,8 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Motivation</label>
-                        <input type="text" name="motivation" class="form-control" value="">
+                        <textarea rows="4" name="motivation" class="form-control" value="" required>
+                        </textarea>
                       </div>
                     </div>
                   </div>
@@ -210,7 +223,8 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Materials</label>
-                        <input type="text" name="materials" class="form-control" value="">
+                        <textarea rows="4" name="materials" class="form-control" value="" required>
+                        </textarea>
                       </div>
                     </div>
                   </div>

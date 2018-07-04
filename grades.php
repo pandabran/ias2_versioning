@@ -169,13 +169,13 @@ if(!isset($_SESSION['id'])){
                         <td>Russel Morquecho</td>
                         <td>2018-06-11</td>
                         <td>
-                          <div class="col-md-3 px-1">
+                          <div class="col-md-4 px-1">
                             <input type="text" class="form-control" value="91">
                           </div>
                         </td>
                         <td>2018-06-13</td>
                         <td>
-                          <div class="col-md-3 px-1">
+                          <div class="col-md-4 px-1">
                             <input type="text" class="form-control" value="89">
                           </div>
                         </td>
@@ -185,13 +185,13 @@ if(!isset($_SESSION['id'])){
                         <td>Malcolm Cada</td>
                         <td>2018-06-11</td>
                         <td>
-                          <div class="col-md-3 px-1">
+                          <div class="col-md-4 px-1">
                             <input type="text" class="form-control" value="90">
                           </div>
                         </td>
                         <td>2018-06-13</td>
                         <td>
-                          <div class="col-md-3 px-1">
+                          <div class="col-md-4 px-1">
                             <input type="text" class="form-control" value="91">
                           </div>
                         </td>

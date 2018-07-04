@@ -184,7 +184,7 @@ $row = mysqli_fetch_row($qry);
                       <div class="form-group">
                         <label class=" text-primary">Lesson Outline</label>
                         <?php echo"<input name='planid' type='hidden'  class='form-control' value='".$_GET['pid']."'>"; ?>
-                        <?php echo"<input name='lessonout' type='text'  class='form-control' value='".$row[2]."'>"; ?>
+                        <?php echo"<textarea name='lessonout' class='form-control' value=''>".$row[2]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -192,7 +192,7 @@ $row = mysqli_fetch_row($qry);
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Objectives</label>
-                        <?php echo"<input name='objectives' type='text' class='form-control' value='".$row[3]."'>"; ?>
+                        <?php echo"<textarea name='objectives' class='form-control' value=''>".$row[3]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -200,7 +200,7 @@ $row = mysqli_fetch_row($qry);
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Instructions</label>
-                        <?php echo"<input name='instruction' type='text' class='form-control' value='".$row[4]."'>"; ?>
+                        <?php echo"<textarea rows='4' name='instruction' class='form-control' value=''>".$row[4]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ $row = mysqli_fetch_row($qry);
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Motivation</label>
-                        <?php echo"<input name='motivation' type='text' class='form-control' value='".$row[5]."'>"; ?>
+                        <?php echo"<textarea rows='4' name='motivation' class='form-control' value=''>".$row[5]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -216,7 +216,7 @@ $row = mysqli_fetch_row($qry);
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Materials</label>
-                        <?php echo"<input name='materials' type='text' class='form-control' value='".$row[6]."'>"; ?>
+                        <?php echo"<textarea rows='4' name='materials' class='form-control' value=''>".$row[6]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>

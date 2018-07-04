@@ -161,8 +161,8 @@ $qry = mysqli_query($sql,
                         while ($row = mysqli_fetch_array($qry)) {
                           echo "<tr>";
                           echo "<td>".$row[0]." ".$row[1]."</td>";
-                          echo "<td align='center'>".$row[2]."</td>";
-                          echo "<td align='center'>".$row[3]."</td>";
+                          echo "<td>".$row[2]."</td>";
+                          echo "<td>".$row[3]."</td>";
                           echo "<td class='text-right'>".$row[4]."</td>";
                           echo "</tr>";
                         }
