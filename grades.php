@@ -145,13 +145,18 @@ if(!isset($_SESSION['id'])){
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card card-chart">
               <div class="card-header">
                 <h4 class="card-title">
                     <b>Arts</b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
                 </h4>
+              </div>
+              <div class="dropdown">
+                <button type="button" class="btn btn-neutral btn-icon btn-round btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                </button>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -168,46 +173,85 @@ if(!isset($_SESSION['id'])){
                       <tr>
                         <td>Russel Morquecho</td>
                         <td>2018-06-11</td>
-                        <td>
-                          <div class="col-md-4 px-1">
-                            <input type="text" class="form-control" value="91">
-                          </div>
-                        </td>
+                        <td>90</td>
                         <td>2018-06-13</td>
-                        <td>
-                          <div class="col-md-4 px-1">
-                            <input type="text" class="form-control" value="89">
-                          </div>
-                        </td>
+                        <td>90</td>
                         <td class="text-right">90</td>
                       </tr>
                       <tr>
                         <td>Malcolm Cada</td>
                         <td>2018-06-11</td>
-                        <td>
-                          <div class="col-md-4 px-1">
-                            <input type="text" class="form-control" value="90">
-                          </div>
-                        </td>
+                        <td>90</td>
                         <td>2018-06-13</td>
-                        <td>
-                          <div class="col-md-4 px-1">
-                            <input type="text" class="form-control" value="91">
-                          </div>
-                        </td>
-                        <td class="text-right">91</td>
+                        <td>90</td>
+                        <td class="text-right">90</td>
                       </tr>
                     </tbody>
                   </table>
-                  <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group text-center">
-                          <button type="submit" class="btn btn-warning btn-lg">Submit</button>
-                        </div>
-                    </div>
+                </div>
+              </div>
+              <!-- MODAL -->
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Grade</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>Student Name</th>
+                        <th>2018-06-11</th>
+                        <th>2018-06-13</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Russel Morquecho</td>
+                          <td>
+                            <div class="col-md-4 pr-1">
+                              <div class="form-group">
+                                <input type="text" class="form-control" value="90">
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="col-md-4 pr-1">
+                              <div class="form-group">
+                                <input type="text" class="form-control" value="90">
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Malcolm Cada</td>
+                          <td>
+                            <div class="col-md-4 pr-1">
+                              <div class="form-group">
+                                <input type="text" class="form-control" value="90">
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="col-md-4 pr-1">
+                              <div class="form-group">
+                                <input type="text" class="form-control" value="90">
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
   <!--   Core JS Files   -->
