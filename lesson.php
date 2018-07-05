@@ -17,6 +17,10 @@ JOIN subject
 ON teacher.subject_id = subject.subject_id
 WHERE user.user_id =".$id);
 
+while ($row = mysqli_fetch_array($qry)) {
+  $subjectName =  $row[0];
+}
+
 $query = mysqli_query($sql, "SELECT * FROM schedule");
 
 ?>
@@ -161,9 +165,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
                 <h4 class="card-title">
                     <b>Lesson Plan for 
                       <?php
-                        while ($row = mysqli_fetch_array($qry)) {
-                          echo $row[0];
-                        }
+                        echo $subjectName;
                       ?>
                     </b>
                     <br>
@@ -173,6 +175,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
               <div class="card-body">
                 <form id='add-lesson' action="addLessonPlan.php" method="POST">
                   <div class="row">
+                      <input type="text" name="subject" value="<?php echo $subjectName; ?>" hidden>
                     <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Date of Plan</label>
@@ -182,7 +185,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Schedule</label>
-                        <select class="form-control">
+                        <select class="form-control" name="schedule">
                           <?php 
                             while ($row = mysqli_fetch_array($query)) {
                               $subjID = $row[2];
@@ -224,7 +227,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Objectives</label>
-                        <textarea name="obj" class="form-control" value="" required>
+                        <textarea name="objectives" class="form-control" value="" required>
                         </textarea>
                       </div>
                     </div>
