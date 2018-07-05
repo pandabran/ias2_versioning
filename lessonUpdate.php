@@ -12,12 +12,12 @@ ON schedule.schedule_id = lesson_plan.schedule_id
 WHERE plan_id=".$_GET['pid']);
 $row = mysqli_fetch_row($qry);
 
-$query = mysqli_query($sql, "SELECT course_name 
+$query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedule.start_time, schedule.end_time 
   FROM user 
-  JOIN teacher
-  ON user.user_id = teacher.teacher_id
+  JOIN schedule
+  ON user.user_id = schedule.teacher_id
   JOIN subject
-  ON teacher.subject_id = subject.subject_id
+  ON schedule.subject_id = subject.subject_id
   WHERE user.user_id =".$_SESSION['id']);
 ?>
 
@@ -161,8 +161,12 @@ $query = mysqli_query($sql, "SELECT course_name
                 <h4 class="card-title">
                     <b>Lesson Plan for 
                       <?php
-                        while ($arr = mysqli_fetch_array($query)) {
-                          echo $arr[0];
+                        while ($arr = $query->fetch_array()) { //to display the course
+                          $subjID = $arr['subject_id'];
+                          $day = $arr['day'];
+                          $start = $arr['start_time'];
+                          $end = $arr['end_time'];
+                          echo $arr['course_name'];
                         }
                       ?>
                     </b>
@@ -182,17 +186,16 @@ $query = mysqli_query($sql, "SELECT course_name
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Schedule</label>
-                        <select class="form-control" value="<?php echo $row[7].' '.$row[8].'-'.$row[9]; ?>">
+                        <!--<select class="form-control" value="<?php //echo $row[7].' '.$row[8].'-'.$row[9]; ?>">-->
                           <?php 
-                            while ($arr = mysqli_fetch_array($query)) {
-                              $subjID = $arr[2];
-                              $day = $arr[3];
-                              $start = $arr[4];
-                              $end = $arr[5];
-                              echo '<option class="dropdown" value="">'.$day.' '.$start.'-'.$end.'</option>';
-                            }
+                   
+                              
+
+                              echo"<input name='schedule' class='form-control' value='".$day." ".$start."-".$end."' readonly></input>";
+                             
+                            
                           ?>
-                        </select>
+                        <!--</select>-->
                       </div>
                     </div>
                     <div class="col-md-4 pr-1">
