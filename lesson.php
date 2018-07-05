@@ -21,8 +21,8 @@ while ($row = mysqli_fetch_array($qry)) {
   $subjectName =  $row[0];
 }
 
-$query = mysqli_query($sql, "SELECT * FROM schedule");
-
+$query = mysqli_query($sql, "SELECT * FROM schedule WHERE schedule.teacher_id = $id LIMIT 1");
+  
 ?>
 
 
@@ -179,23 +179,21 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
                     <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Date of Plan</label>
-                        <input type="date"  name="date" class="form-control" value="" required>
+                        <input type="date"  name="datePlan" class="form-control" value="" required>
                       </div>
                     </div>
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
-                        <label class=" text-primary">Schedule</label>
-                        <select class="form-control" name="schedule">
+                        <label class="text-primary">Schedule</label>
                           <?php 
-                            while ($row = mysqli_fetch_array($query)) {
+                            while($row = $query->fetch_array()){
                               $subjID = $row[2];
                               $day = $row[3];
                               $start = $row[4];
                               $end = $row[5];
-                              echo '<option class="dropdown" value="">'.$day.' '.$start.'-'.$end.'</option>';
+                              echo"<input name='schedule' class='form-control' value='".$day." ".$start."-".$end."' readonly></input>";
                             }
                           ?>
-                        </select>
                       </div>
                     </div>
                     <div class="col-md-4 pr-1">
