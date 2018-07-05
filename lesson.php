@@ -259,6 +259,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule");
                       </div>
                     </div>
                   </div>
+                  <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>" class="form-control">
                   <div class="row">
                       <div class="col-md-12">
                         <div class="form-group text-center">

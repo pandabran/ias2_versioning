@@ -2,35 +2,37 @@
 
 	include("connector.php");
   
-  session_start();
-  if(!isset($_SESSION['id'])){
-    header("location:index.php");
-  }
-
-  $id = $_SESSION['id'];
-  $subject = mysqli_real_escape_string($sql, $_POST['subject']);
-	$schedule = mysqli_real_escape_string($sql, $_POST['schedule']);
-	$venue = mysqli_real_escape_string($sql, $_POST['venue']);
-	$datePlan = mysqli_real_escape_string($sql, $_POST['date']);
-  $date_created = date("mm/dd/yyyy");
-  $date_updated = date("mm/dd/yyyy");
+  $id = mysqli_real_escape_string($sql, $_POST['id']);
+  $venue = mysqli_real_escape_string($sql, $_POST['venue']);
+  $datePlan = mysqli_real_escape_string($sql, $_POST['datePlan']);
+  $datecreated = date("m/d/y");
+  $date_created = date("Y-m-d", strtotime($datecreated));
+  $dateupdated = date("m/d/y");
+  $date_updated = date("Y-m-d", strtotime($dateupdated));
   $lessonOutline = mysqli_real_escape_string($sql, $_POST['lessonOutline']);
-	$objectives = mysqli_real_escape_string($sql, $_POST['objectives']);
-  $instructions = mysqli_real_escape_string($sql, $_POST['instructions']);
+  $objectives = mysqli_real_escape_string($sql, $_POST['objectives']);
+  $instruction = mysqli_real_escape_string($sql, $_POST['instructions']);
   $summary = mysqli_real_escape_string($sql, $_POST['lessonOutline']);
   $motivation = mysqli_real_escape_string($sql, $_POST['motivation']);
   $materials = mysqli_real_escape_string($sql, $_POST['materials']);
 
-  $qry = mysqli_query($sql, "SELECT * 
-    FROM subject 
-    WHERE course_name=".$subject)->fetch_object()->qry;
+  //echo $id." ".$venue." ".$datePlan." ".$date_created." ".$date_updated." ".$lessonOutline." ".$objectives." ".$instruction." ".$summary." ".$motivation." ".$materials;
 
-  echo $qry; // <---- error pa ni
+  $qry = mysqli_query($sql, "SELECT schedule.schedule_id, schedule.teacher_id, schedule.subject_id FROM schedule JOIN lesson_plan ON schedule.teacher_id = lesson_plan.teacher_id WHERE schedule.teacher_id = $id LIMIT 1");
+  
+  while($row=$qry->fetch_array()){
+    $subject_id =  $row[2];
+    $schedule_id = $row[0];
+  } 
 
-  // ABOVE QUERY means subject is retrieved from lesson.php //
-  // So you access the subject id through course_name column //
+  $result = mysqli_query($sql,"INSERT INTO lesson_plan (subject_id, schedule_id, teacher_id, venue, date_created, date_of_plan, date_updated, lesson_outline, objectives, instruction, motivation, materials, coordinator_id) VALUES ('$subject_id','$schedule_id','$id','$venue', '$date_created', '$datePlan', '$date_updated','$lessonOutline', '$objectives', '$instruction', '$motivation', '$materials', '15100105')");
 
-  $result = $sql->query("INSERT INTO lesson_plan(plan_id, subject_id, schedule_id, venue, date_created, date_of_plan, date_updated, lesson_outline, objectives, instruction, motivation, materials, coordinator_id, is_approved) VALUES(,'$subjectID','//===== ADD SUBJECT ID HERE =====//','$venue', '$date_created', 'datePlan', '$date_updated','$lessonOutline', '$objectives', '$instruction', '$motivation', '$materials', '15100105','1')");
+  if($result){
+    echo "<script>alert('Successfully added Lesson Plan');</script>";
+    header("refresh:0;url=home.php");
+  }else{
+    echo "<script>alert('Error: '. $result . '<br>' . $sql->error)</script>";
+  }
 
 
 ?>
