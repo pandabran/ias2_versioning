@@ -5,10 +5,20 @@ if(!isset($_SESSION['id']) && !isset($_GET['pid'])){
     header("location:index.php");
   }
  
-$qry = mysqli_query($sql,"SELECT date_of_plan,venue,lesson_outline,objectives,instruction,motivation,materials FROM lesson_plan WHERE plan_id=".$_GET['pid']);
+$qry = mysqli_query($sql,"SELECT date_of_plan,venue,lesson_outline,objectives,instruction,motivation,materials,day,start_time,end_time 
+FROM lesson_plan
+JOIN schedule
+ON schedule.schedule_id = lesson_plan.schedule_id
+WHERE plan_id=".$_GET['pid']);
 $row = mysqli_fetch_row($qry);
 
-
+$query = mysqli_query($sql, "SELECT course_name 
+  FROM user 
+  JOIN teacher
+  ON user.user_id = teacher.teacher_id
+  JOIN subject
+  ON teacher.subject_id = subject.subject_id
+  WHERE user.user_id =".$_SESSION['id']);
 ?>
 
 
@@ -149,7 +159,13 @@ $row = mysqli_fetch_row($qry);
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                    <b>Lesson Plan for Arts</b>
+                    <b>Lesson Plan for 
+                      <?php
+                        while ($arr = mysqli_fetch_array($query)) {
+                          echo $arr[0];
+                        }
+                      ?>
+                    </b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
                 </h4>
@@ -157,13 +173,29 @@ $row = mysqli_fetch_row($qry);
               <div class="card-body">
                 <form method="POST" action="lessonUpdate2.php">
                   <div class="row">
-                    <div class="col-md-4 pr-1">
+                    <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Date of Plan</label>
-                        <?php echo"<input name='dop' type='text' class='form-control' value='".$row[0]."'>"; ?>
+                        <?php echo"<input name='dop' type='date' class='form-control' value='".$row[0]."'>"; ?>
                       </div>
                     </div>
-                    <div class="col-md-6 pr-1">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label class=" text-primary">Schedule</label>
+                        <select class="form-control" value="<?php echo $row[7].' '.$row[8].'-'.$row[9]; ?>">
+                          <?php 
+                            while ($arr = mysqli_fetch_array($query)) {
+                              $subjID = $arr[2];
+                              $day = $arr[3];
+                              $start = $arr[4];
+                              $end = $arr[5];
+                              echo '<option class="dropdown" value="">'.$day.' '.$start.'-'.$end.'</option>';
+                            }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Venue</label>
                         <?php echo"<input name='venue' type='text' class='form-control' value='".$row[1]."'>"; ?>

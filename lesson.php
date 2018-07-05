@@ -17,6 +17,7 @@ JOIN subject
 ON teacher.subject_id = subject.subject_id
 WHERE user.user_id =".$id);
 
+$query = mysqli_query($sql, "SELECT * FROM schedule");
 
 ?>
 
@@ -182,8 +183,15 @@ WHERE user.user_id =".$id);
                       <div class="form-group">
                         <label class=" text-primary">Schedule</label>
                         <select class="form-control">
-                          <option class="dropdown" value="">MW 9:00-12:00</option>
-                          <option class="dropdown" value="">MW 1:00-4:00</option>
+                          <?php 
+                            while ($row = mysqli_fetch_array($query)) {
+                              $subjID = $row[2];
+                              $day = $row[3];
+                              $start = $row[4];
+                              $end = $row[5];
+                              echo '<option class="dropdown" value="">'.$day.' '.$start.'-'.$end.'</option>';
+                            }
+                          ?>
                         </select>
                       </div>
                     </div>
