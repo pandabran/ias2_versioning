@@ -1,8 +1,22 @@
 <?php
 session_start();
+
+$id = $_SESSION['id'];
+
 if(!isset($_SESSION['id'])){
     header("location:index.php");
-  }
+}
+
+require("connector.php");
+
+$qry = mysqli_query($sql, "SELECT course_name 
+FROM user 
+JOIN teacher
+ON user.user_id = teacher.teacher_id
+JOIN subject
+ON teacher.subject_id = subject.subject_id
+WHERE user.user_id =".$id);
+
 
 ?>
 
@@ -144,7 +158,13 @@ if(!isset($_SESSION['id'])){
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">
-                    <b>Lesson Plan for Arts</b>
+                    <b>Lesson Plan for 
+                      <?php
+                        while ($row = mysqli_fetch_array($qry)) {
+                          echo $row[0];
+                        }
+                      ?>
+                    </b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
                 </h4>

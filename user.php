@@ -1,8 +1,34 @@
 <?php
+require("connector.php");
 session_start();
+
 if(!isset($_SESSION['id'])){
-    header("location:index.php");
-  }
+  header("location:index.php");
+}
+
+$query = mysqli_query($sql, "SELECT * FROM user WHERE user_id =".$_SESSION['id']);
+$qry = mysqli_query($sql, "SELECT course_name 
+FROM user 
+JOIN teacher
+ON user.user_id = teacher.teacher_id
+JOIN subject
+ON teacher.subject_id = subject.subject_id
+WHERE user.user_id =".$_SESSION['id']);
+
+while ($row = mysqli_fetch_array($query)) {
+  $id =  $row[0];
+  $firstname = $row[1];
+  $lastname = $row[2];
+  $town = $row[5];
+  $city = $row[6];
+  $country = $row[7];
+  $zip = $row[8];
+  $email = $row[9];
+}
+
+while ($another = mysqli_fetch_array($qry)) {
+  $subject = $another[0];
+}
 
 ?>
 
@@ -156,13 +182,13 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Identification Card</label>
-                        <input type="text" class="form-control" disabled="" placeholder="ID" value="15100256">
+                        <input type="text" class="form-control" disabled="" placeholder="ID" value="<?php echo $id; ?>">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
                       </div>
                     </div>
                   </div>
@@ -170,13 +196,13 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" value="Krizia">
+                        <input type="text" class="form-control" placeholder="First Name" value="<?php echo $firstname; ?>">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="Lumapas">
+                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $lastname; ?>">
                       </div>
                     </div>
                   </div>
@@ -184,7 +210,7 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Lapu-Lapu City">
+                        <input type="text" class="form-control" placeholder="Home Address" value="<?php echo $town; ?>">
                       </div>
                     </div>
                   </div>
@@ -192,19 +218,19 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>City</label>
-                        <input type="text" class="form-control" placeholder="City" value="Cebu">
+                        <input type="text" class="form-control" placeholder="City" value="<?php echo $city; ?>">
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Philippines">
+                        <input type="text" class="form-control" placeholder="Country" value="<?php echo $country; ?>">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Postal Code</label>
-                        <input type="number" class="form-control" placeholder="ZIP Code">
+                        <input type="number" class="form-control" placeholder="ZIP Code" value="<?php echo $zip; ?>">
                       </div>
                     </div>
                   </div>
@@ -212,7 +238,7 @@ if(!isset($_SESSION['id'])){
                     <div class="col-md-12">
                       <div class="form-group">
                           <label>Subject</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Subject" value="Arts, Liberal Science (char lang hahaha)">
+                          <input type="text" class="form-control" disabled="" placeholder="Subject" value="<?php echo $subject; ?>">
                       </div>
                     </div>
                   </div>
@@ -236,14 +262,14 @@ if(!isset($_SESSION['id'])){
                 <div class="author">
                   <a href="#">
                     <img class="avatar border-gray" src="img/profile.png">
-                    <h5 class="title">Krizia Lumapas</h5>
+                    <h5 class="title"><?php echo $firstname." ".$lastname; ?></h5>
                   </a>
                   <p class="description">
-                    15100256
+                    <?php echo $id; ?>
                   </p>
                 </div>
                 <p class="description text-center">
-                  Arts Teacher
+                  <?php echo $subject; ?> Teacher
                 </p>
               </div>
               <hr>
