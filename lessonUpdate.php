@@ -180,7 +180,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Date of Plan</label>
-                        <?php echo"<input name='dop' type='date' class='form-control' value='".$row[0]."'>"; ?>
+                        <?php echo"<input name='dop' type='date' class='form-control' value='".$row[0]."' readonly>"; ?>
                       </div>
                     </div>
                     <div class="col-md-4 pr-1">
@@ -201,7 +201,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label class=" text-primary">Venue</label>
-                        <?php echo"<input name='venue' type='text' class='form-control' value='".$row[1]."'>"; ?>
+                        <?php echo"<input name='venue' type='text' class='form-control' value='".$row[1]."'readonly>"; ?>
                       </div>
                     </div>
                     <div class="col-md-1 pr-1">
@@ -218,8 +218,8 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Lesson Outline</label>
-                        <?php echo"<input name='planid' type='hidden'  class='form-control' value='".$_GET['pid']."'>"; ?>
-                        <?php echo"<textarea name='lessonout' class='form-control' value=''>".$row[2]."</textarea>"; ?>
+                        <?php echo"<input name='planid' type='hidden'  class='form-control' value='".$_GET['pid']."'readonly>"; ?>
+                        <?php echo"<textarea name='lessonout' class='form-control' value=''readonly>".$row[2]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -227,7 +227,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Objectives</label>
-                        <?php echo"<textarea name='objectives' class='form-control' value=''>".$row[3]."</textarea>"; ?>
+                        <?php echo"<textarea name='objectives' class='form-control' value=''readonly>".$row[3]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -235,7 +235,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Instructions</label>
-                        <?php echo"<textarea rows='4' name='instruction' class='form-control' value=''>".$row[4]."</textarea>"; ?>
+                        <?php echo"<textarea rows='4' name='instruction' class='form-control' value=''readonly>".$row[4]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Motivation</label>
-                        <?php echo"<textarea rows='4' name='motivation' class='form-control' value=''>".$row[5]."</textarea>"; ?>
+                        <?php echo"<textarea rows='4' name='motivation' class='form-control' value=''readonly>".$row[5]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
@@ -251,7 +251,7 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class=" text-primary">Materials</label>
-                        <?php echo"<textarea rows='4' name='materials' class='form-control' value=''>".$row[6]."</textarea>"; ?>
+                        <?php echo"<textarea rows='4' name='materials' class='form-control' value=''readonly>".$row[6]."</textarea>"; ?>
                       </div>
                     </div>
                   </div>
