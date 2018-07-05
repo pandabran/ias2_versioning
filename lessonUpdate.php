@@ -255,13 +255,13 @@ $query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedu
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                       <div class="col-md-12">
                         <div class="form-group text-center">
                           <button type="submit" class="btn btn-warning btn-lg">Submit</button>
                         </div>
                     </div>
-                  </div>
+                  </div> -->
                 </form>
                 </div>
               </div>
