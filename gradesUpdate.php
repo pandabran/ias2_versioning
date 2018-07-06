@@ -1,27 +1,24 @@
 <?php
-session_start();
-
-$id = $_SESSION['id'];
-
-if(!isset($_SESSION['id'])){
-    header("location:index.php");
-}
-
 require("connector.php");
+session_start();
+if(!isset($_SESSION['id']) && !isset($_GET['pid'])){
+    header("location:index.php");
+  }
 
-$qry = mysqli_query($sql, "SELECT course_name
-FROM user
-JOIN teacher
-ON user.user_id = teacher.teacher_id
-JOIN subject
-ON teacher.subject_id = subject.subject_id
-WHERE user.user_id =".$id);
+$qry = mysqli_query($sql,"SELECT date_of_plan,venue,lesson_outline,objectives,instruction,motivation,materials,day,start_time,end_time
+FROM lesson_plan
+JOIN schedule
+ON schedule.schedule_id = lesson_plan.schedule_id
+WHERE plan_id=".$_GET['pid']);
+$row = mysqli_fetch_row($qry);
 
-while ($row = mysqli_fetch_array($qry)) {
-  $subjectName =  $row[0];
-}
-
-$query = mysqli_query($sql, "SELECT * FROM schedule WHERE schedule.teacher_id = $id LIMIT 1");
+$query = mysqli_query($sql, "SELECT *, schedule.subject_id, schedule.day, schedule.start_time, schedule.end_time
+  FROM user
+  JOIN schedule
+  ON user.user_id = schedule.teacher_id
+  JOIN subject
+  ON schedule.subject_id = subject.subject_id
+  WHERE user.user_id =".$_SESSION['id']);
 
 ?>
 
@@ -66,13 +63,13 @@ $query = mysqli_query($sql, "SELECT * FROM schedule WHERE schedule.teacher_id = 
               <p>Schedule</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="lesson.php">
               <i class="now-ui-icons education_agenda-bookmark"></i>
               <p>Lesson Plan</p>
             </a>
           </li>
-          <li>
+          <li class="active ">
             <a href="grades.php">
               <i class="now-ui-icons design-2_ruler-pencil"></i>
               <p>Grades</p>
@@ -111,7 +108,7 @@ $query = mysqli_query($sql, "SELECT * FROM schedule WHERE schedule.teacher_id = 
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Lesson Plan</a>
+            <a class="navbar-brand" href="#">Grades</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -160,114 +157,97 @@ $query = mysqli_query($sql, "SELECT * FROM schedule WHERE schedule.teacher_id = 
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card card-chart">
               <div class="card-header">
                 <h4 class="card-title">
-                    <b>Lesson Plan for
+                    <b>
                       <?php
-                        echo $subjectName;
+                        while ($row = mysqli_fetch_array($qry)) {
+                          echo $row[0];
+                        }
                       ?>
                     </b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
                 </h4>
               </div>
+              <div class="dropdown">
+                <button type="button" class="btn btn-neutral btn-icon btn-round btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                </button>
+              </div>
               <div class="card-body">
-                <form id='add-lesson' action="addLessonPlan.php" method="POST">
-                  <div class="row">
-                      <input type="text" name="subject" value="<?php echo $subjectName; ?>" hidden>
-                    <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                        <label class=" text-primary">Date of Plan</label>
-                        <input type="date"  name="datePlan" class="form-control" value="" required>
-                      </div>
-                    </div>
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label class="text-primary">Schedule</label>
-                          <?php
-                            while($row = $query->fetch_array()){
-                              $subjID = $row[2];
-                              $day = $row[3];
-                              $start = $row[4];
-                              $end = $row[5];
-                              echo"<input name='schedule' class='form-control' value='".$day." ".$start."-".$end."' readonly></input>";
-                            }
-                          ?>
-                      </div>
-                    </div>
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label class=" text-primary">Venue</label>
-                        <input type="text" name="venue" class="form-control" value="" required>
-                      </div>
-                    </div>
-                    <div class="col-md-1 pr-1">
-                      <div class="form-check">
-                          <label class="form-check-label text-primary">
-                            Status
-                            <input class="form-check-input" disabled="" type="checkbox" checked>
-                            <span class="form-check-sign"></span>
-                          </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class=" text-primary">Lesson Outline</label>
-                        <textarea name="lessonOutline" class="form-control" value="" required>
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class=" text-primary">Objectives</label>
-                        <textarea name="objectives" class="form-control" value="" required>
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class=" text-primary">Instructions</label>
-                        <textarea rows="4" name="instructions" class="form-control" value="" required>
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class=" text-primary">Motivation</label>
-                        <textarea rows="4" name="motivation" class="form-control" value="" required>
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class=" text-primary">Materials</label>
-                        <textarea rows="4" name="materials" class="form-control" value="" required>
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>" class="form-control">
-                  <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group text-center">
-                          <button type="submit" class="btn btn-warning btn-lg">Submit</button>
-                        </div>
-                    </div>
-                  </div>
-                </form>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Student Name</th>
+                      <th>Grade</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <?php
+                          while($row = mysqli_fetch_assoc($records)){
+                            echo "<tr>";
+                            echo "<td>".$row['firstname']." ".$row['lastname']."</td>";
+                            echo "<td><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#viewGrades'>
+                                  View</button></td>";
+                            echo "<tr>";
+                          }
+                        ?>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+              <!-- MODAL -->
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="viewGrades">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Grade</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>Student Name</th>
+                        <th>2018-06-11</th>
+                        <th>2018-06-13</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
+                              echo "<tr>";
+                              echo "<td>".$rows[0]." ".$rows[1]."</td>";
+                              echo "<td>";
+                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='form-group'>";
+                              echo "<input type='text' class='form-control' value=''>";
+                              echo "</div>";
+                              echo "</div>";
+                              echo "</td>";
+                              echo "<td>";
+                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='form-group'>";
+                              echo "<input type='text' class='form-control' value=''>";
+                              echo "</div>";
+                              echo "</div>";
+                              echo "</td>";
+                              echo "</tr>";
+                          ?>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
   <!--   Core JS Files   -->

@@ -9,13 +9,16 @@ if(!isset($_SESSION['id'])){
 
 require("connector.php");
 
-$qry = mysqli_query($sql, "SELECT course_name 
-FROM user 
+$qry = mysqli_query($sql, "SELECT course_name
+FROM user
 JOIN teacher
 ON user.user_id = teacher.teacher_id
 JOIN subject
 ON teacher.subject_id = subject.subject_id
 WHERE user.user_id =".$id);
+
+$records = mysqli_query($sql, "SELECT firstname, lastname FROM user WHERE type='student'");
+$rows = mysqli_fetch_row($records);
 
 ?>
 
@@ -178,35 +181,28 @@ WHERE user.user_id =".$id);
                   <table class="table">
                     <thead class=" text-primary">
                       <th>Student Name</th>
-                      <th>Activity Date</th>
                       <th>Grade</th>
-                      <th>Activity Date</th>
-                      <th>Grade</th>
-                      <th class="text-right">Final Grade</th>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Russel Morquecho</td>
-                        <td>2018-06-11</td>
-                        <td>90</td>
-                        <td>2018-06-13</td>
-                        <td>90</td>
-                        <td class="text-right">90</td>
-                      </tr>
-                      <tr>
-                        <td>Malcolm Cada</td>
-                        <td>2018-06-11</td>
-                        <td>90</td>
-                        <td>2018-06-13</td>
-                        <td>90</td>
-                        <td class="text-right">90</td>
+                        <?php
+                          while($row = mysqli_fetch_assoc($records)){
+                            echo "<tr>";
+                            echo "<td>".$row['firstname']." ".$row['lastname']."</td>";
+                            echo "<input type='hidden' name='id' class='form-control' value=<?php echo $rows[0]?>";
+                            echo "<div class='form-group text-center'>";
+                            echo "<td><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#viewGrades'>
+                                  View</button></td>";
+                            echo "<tr>";
+                          }
+                        ?>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
               <!-- MODAL -->
-              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="viewGrades">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -224,45 +220,32 @@ WHERE user.user_id =".$id);
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Russel Morquecho</td>
-                          <td>
-                            <div class="col-md-4 pr-1">
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="90">
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="col-md-4 pr-1">
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="90">
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Malcolm Cada</td>
-                          <td>
-                            <div class="col-md-4 pr-1">
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="90">
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="col-md-4 pr-1">
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="90">
-                              </div>
-                            </div>
-                          </td>
+                          <?php
+                              echo "<tr>";
+                              echo "<td>".$rows[0]." ".$rows[1]."</td>";
+                              echo "<td>";
+                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='form-group'>";
+                              echo "<input type='text' class='form-control' value=''>";
+                              echo "</div>";
+                              echo "</div>";
+                              echo "</td>";
+                              echo "<td>";
+                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='form-group'>";
+                              echo "<input type='text' class='form-control' value=''>";
+                              echo "</div>";
+                              echo "</div>";
+                              echo "</td>";
+                              echo "</tr>";
+                          ?>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>
