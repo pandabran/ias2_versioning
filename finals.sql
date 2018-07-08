@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 05:32 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jul 08, 2018 at 07:18 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `brans2`
+-- Database: `finals`
 --
 
 -- --------------------------------------------------------
@@ -41,8 +41,26 @@ CREATE TABLE `activity` (
 --
 
 INSERT INTO `activity` (`activity_id`, `plan_id`, `grade`, `student_id`, `grade_id`) VALUES
-(1, 1, 9.99, 15100106, 1),
-(4, 1, 1.30, 15100106, 1);
+(1, 1, 2.22, 15100114, 3),
+(2, 1, 1.22, 15100114, 3),
+(3, 1, 2.54, 15100107, 2),
+(4, 1, 1.22, 15100107, 2),
+(5, 1, 1.22, 15100106, 1),
+(6, 1, 1.99, 15100106, 1),
+(7, 1, 1.22, 15100113, 4),
+(8, 1, 1.99, 15100113, 4),
+(9, 1, 2.45, 15100112, 5),
+(10, 1, 1.00, 15100112, 5),
+(11, 1, 2.23, 15100111, 6),
+(12, 1, 1.86, 15100111, 6),
+(13, 1, 1.11, 15100110, 7),
+(14, 1, 1.98, 15100110, 7),
+(15, 1, 2.40, 15100109, 8),
+(16, 1, 2.54, 15100109, 8),
+(17, 1, 2.45, 15100108, 9),
+(18, 1, 2.00, 15100108, 9),
+(19, 1, 1.22, 15100112, 10),
+(20, 1, 1.25, 15100112, 10);
 
 -- --------------------------------------------------------
 
@@ -79,9 +97,16 @@ CREATE TABLE `grade` (
 --
 
 INSERT INTO `grade` (`grade_id`, `student_id`, `subject_id`, `final_grade`) VALUES
-(1, 15100106, 3, 4.45),
-(2, 15100107, 3, 0.00),
-(3, 15100108, 3, 0.75);
+(1, 15100106, 4, 1.60),
+(2, 15100107, 1, 2.55),
+(3, 15100114, 1, 1.22),
+(4, 15100114, 2, 1.25),
+(5, 15100112, 4, 2.45),
+(6, 15100111, 3, 1.22),
+(7, 15100110, 3, 2.23),
+(8, 15100109, 2, 1.77),
+(9, 15100108, 1, 1.24),
+(10, 15100112, 3, 2.55);
 
 -- --------------------------------------------------------
 
@@ -267,31 +292,32 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`, `email`, `password`) VALUES
-(15100101, 'Devorah', 'Narvaez', 'teacher', '1.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, 'devorahnarvaez@gmail.com', 'devqui123'),
-(15100102, 'Krizia', 'Lumapas', 'teacher', '2.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, 'krizialumapas@gmail.com', 'krilum123'),
-(15100103, 'Jane', 'Manguiran', 'teacher', '3.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, 'janemanguiran@gmail.com', 'janman123'),
-(15100104, 'Abigail', 'Semilla', 'teacher', '4.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, 'abigailsemilla@gmail.com', 'abisem123'),
-(15100105, 'Benedict', 'Sanchez', 'coordinator', '5.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, 'benedictsanchez@gmail.com', 'bensan123'),
-(15100106, 'Russel', 'Morquecho', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100107, 'Malcolm', 'Cada', 'student', 'profile.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100108, 'Patty', 'Krasner', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100109, 'Celestina', 'Herbst', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100110, 'Rufus', 'Benham', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100111, 'Nestor', 'Buresh', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100112, 'Yolande', 'Lant', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100113, 'Peg', 'Girton', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100114, 'Leigh', 'Piekarski', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100115, 'Christopher', 'Poll', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100116, 'Drema', 'Vanscyoc', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100117, 'Gaylene', 'Durant', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100118, 'Krysten', 'Cranmer', 'student', 'profile.jpg', 'Mandaue', 'Cebu', 'Philippines', 6000, '', ''),
-(15100119, 'Marshall', 'Tittle', 'student', 'profile.jpg', 'Minganilla', 'Minganilla', 'Philippines', 6000, '', ''),
-(15100120, 'Keesha', 'Bomar', 'student', 'profile.jpg', 'Pit-os', 'Cebu', 'Philippines', 6000, '', ''),
-(15100121, 'Lester', 'Hopwood', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100122, 'Lynette', 'Hornback', 'student', 'profile.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100123, 'Angelo', 'Ritch', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
-(15100124, 'Margeret', 'Lugo', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
-(15100125, 'Lara', 'Ahmad', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', '');
+(15100101, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000, 'devorahnarvaez@gmail.com', 'devqui123'),
+(15100102, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, 'krizialumapas@gmail.com', 'krilum123'),
+(15100103, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, 'janemanguiran@gmail.com', 'janman123'),
+(15100104, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'abigailsemilla@gmail.com', 'abisem123'),
+(15100105, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'benedictsanchez@gmail.com', 'bensan123'),
+(15100106, 'Russel', 'Morquecho', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100107, 'Malcolm', 'Cada', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100108, 'Patty', 'Krasner', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100109, 'Celestina', 'Herbst', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100110, 'Rufus', 'Benham', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100111, 'Nestor', 'Buresh', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100112, 'Yolande', 'Lant', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100113, 'Peg', 'Girton', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100114, 'Leigh', 'Piekarski', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100115, 'Christopher', 'Poll', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100116, 'Drema', 'Vanscyoc', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100117, 'Gaylene', 'Durant', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100118, 'Krysten', 'Cranmer', 'student', '', 'Mandaue', 'Cebu', 'Philippines', 6000, '', ''),
+(15100119, 'Marshall', 'Tittle', 'student', '', 'Minganilla', 'Minganilla', 'Philippines', 6000, '', ''),
+(15100120, 'Keesha', 'Bomar', 'student', '', 'Pit-os', 'Cebu', 'Philippines', 6000, '', ''),
+(15100121, 'Lester', 'Hopwood', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100122, 'Lynette', 'Hornback', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100123, 'Angelo', 'Ritch', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100124, 'Margeret', 'Lugo', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100125, 'Lara', 'Ahmad', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100126, 'Taylor', 'Swift', 'student', '', 'somewhere', 'down', 'the road', 252352, 'taylorswift@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -379,13 +405,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15100107;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15100117;
 
 --
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `lesson_plan`
@@ -409,7 +435,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15100126;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15100127;
 
 --
 -- Constraints for dumped tables
