@@ -177,7 +177,6 @@
                           while($row = mysqli_fetch_assoc($records)){
                             echo "<tr>";
                             echo "<td>".$row['firstname']." ".$row['lastname']."</td>";
-                            echo "<input type='hidden' name='id' class='form-control' ";
                             echo "<div class='form-group text-center'>";
                             echo "<td><button class='btn btn-primary viewBtn' type='button' data-toggle='modal' data-target='#viewGrades' value='". $row['user_id'] ."'>
                                   View</button></td>";
@@ -209,11 +208,13 @@
                       <tbody>
                         <tr>
                           <?php
+                              echo "<input id='student_id' type='text' value='' hidden>";
                               echo "<tr>";
                               echo "<td id='name'></td>";
                               echo "<td>";
                               echo "<div class='col-md-5 pr-1'>";
                               echo "<div class='form-group'>";
+                              echo "<input id='first_grade_id' type='text' value='' hidden>";
                               echo "<input id='first_grade' type='text' class='form-control grade-input' value=''>";
                               echo "</div>";
                               echo "</div>";
@@ -221,6 +222,7 @@
                               echo "<td>";
                               echo "<div class='col-md-5 pr-1'>";
                               echo "<div class='form-group'>";
+                              echo "<input id='second_grade_id' type='text' value='' hidden>";
                               echo "<input id='second_grade' type='text' class='form-control grade-input' value=''>";
                               echo "</div>";
                               echo "</div>";
@@ -233,7 +235,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary" id="updateBtn">Save changes</button>
                   </div>
                 </div>
               </div>
@@ -261,31 +263,52 @@
   $(document).ready(function(){
     $(".viewBtn").click(function(){
       var student_id = $(this).attr('value');
-      console.log(student_id);
       $.ajax({
         type: "POST",
         url: "getGrades.php",
         data: {student_id: student_id, subject_id: 3, order: "ASC"}, // replace with actual subject id (dynamically)
         dataType: "json",
         success: function(data){
-          console.log(data);
           $("#name").html(data["firstname"] + ' ' + data["lastname"]);
           $("#first_date").html(data["date_of_plan"]); // change to date
           $("#first_grade").val(data["grade"]);
+          $("#student_id").val(data["student_id"]);
+          $("#first_grade_id").val(data["activity_id"]);
         },
         error: function(){
           console.log("error");
         }
       });
+
       $.ajax({
         type: "POST",
         url: "getGrades.php",
         data: {student_id: student_id, subject_id: 3, order: "DESC"}, // replace with actual subject id (dynamically)
         dataType: "json",
         success: function(data){
-          console.log(data);
           $("#second_date").html(data["date_of_plan"]); // change to date
           $("#second_grade").val(data["grade"]);
+          $("#second_grade_id").val(data["activity_id"]);
+        },
+        error: function(){
+          console.log("error");
+        }
+      });
+    });
+
+    $("#updateBtn").click(function(){
+      var student_id = $("#student_id").val();
+      var first_grade = $("#first_grade").val();
+      var second_grade = $("#second_grade").val();
+      var first_activity_id = $("#first_grade_id").val();
+      var second_activity_id = $("#second_grade_id").val();
+      $.ajax({
+        type: "POST",
+        url: "updateGrades.php",
+        data: {student_id: student_id, first_grade: first_grade, second_grade: second_grade, first_activity_id: first_activity_id, second_activity_id: second_activity_id},
+        dataType: "text",
+        success: function(data){
+          console.log("Change " + data);
         },
         error: function(){
           console.log("error");
@@ -293,6 +316,4 @@
       });
     });
   });
-
-
 </script>
