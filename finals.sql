@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 07:26 AM
+-- Generation Time: Jul 08, 2018 at 07:50 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -32,17 +32,18 @@ CREATE TABLE `activity` (
   `activity_id` int(11) NOT NULL,
   `plan_id` int(11) NOT NULL,
   `grade` float(3,2) NOT NULL,
-  `student_id` int(11) NOT NULL
+  `student_id` int(11) NOT NULL,
+  `grade_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activity`
 --
 
-INSERT INTO `activity` (`activity_id`, `plan_id`, `grade`, `student_id`) VALUES
-(1, 1, 9.99, 15100106),
-(2, 1, 0.00, 15100107),
-(3, 1, 1.50, 15100108);
+INSERT INTO `activity` (`activity_id`, `plan_id`, `grade`, `student_id`, `grade_id`) VALUES
+(1, 1, 9.99, 15100106, 1),
+(2, 1, 0.00, 15100107, 2),
+(3, 1, 1.50, 15100108, 3);
 
 -- --------------------------------------------------------
 
@@ -68,10 +69,20 @@ INSERT INTO `coordinator` (`coordinator_id`) VALUES
 --
 
 CREATE TABLE `grade` (
+  `grade_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `final_grade` float(3,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `grade`
+--
+
+INSERT INTO `grade` (`grade_id`, `student_id`, `subject_id`, `final_grade`) VALUES
+(1, 15100106, 3, 4.45),
+(2, 15100107, 3, 0.00),
+(3, 15100108, 3, 0.75);
 
 -- --------------------------------------------------------
 
@@ -314,6 +325,7 @@ ALTER TABLE `coordinator`
 -- Indexes for table `grade`
 --
 ALTER TABLE `grade`
+  ADD PRIMARY KEY (`grade_id`),
   ADD KEY `student_id` (`student_id`),
   ADD KEY `subject_id` (`subject_id`);
 
@@ -369,6 +381,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `activity`
   MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lesson_plan`
