@@ -7,6 +7,8 @@
 
   $id = $_SESSION['id'];
   require("connector.php");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,7 +154,13 @@
               <div class="card-header">
                 <h4 class="card-title">
                     <b>
-                      Testing
+                      <?php
+                        $query = "SELECT subject.subject_id, subject.course_name FROM user JOIN teacher ON user.user_id = teacher.teacher_id JOIN subject ON teacher.subject_id = subject.subject_id WHERE user_id =".$id;
+                        $result = mysqli_query($sql, $query);
+                        $row = mysqli_fetch_assoc($result);
+                        echo $row["course_name"];
+                        echo "<input id='subject_id' type='text' value='".$row['subject_id']."' hidden>";
+                      ?>
                     </b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
@@ -263,10 +271,11 @@
   $(document).ready(function(){
     $(".viewBtn").click(function(){
       var student_id = $(this).attr('value');
+      var subject_id = $("#subject_id").val();
       $.ajax({
         type: "POST",
         url: "getGrades.php",
-        data: {student_id: student_id, subject_id: 3, order: "ASC"}, // replace with actual subject id (dynamically)
+        data: {student_id: student_id, subject_id: subject_id, order: "ASC"}, // replace with actual subject id (dynamically)
         dataType: "json",
         success: function(data){
           $("#name").html(data["firstname"] + ' ' + data["lastname"]);
@@ -283,7 +292,7 @@
       $.ajax({
         type: "POST",
         url: "getGrades.php",
-        data: {student_id: student_id, subject_id: 3, order: "DESC"}, // replace with actual subject id (dynamically)
+        data: {student_id: student_id, subject_id: subject_id, order: "DESC"}, // replace with actual subject id (dynamically)
         dataType: "json",
         success: function(data){
           $("#second_date").html(data["date_of_plan"]); // change to date
