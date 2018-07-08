@@ -1,16 +1,13 @@
 <?php
   session_start();
 
-  $id = $_SESSION['id'];
-
   if(!isset($_SESSION['id'])){
       header("location:index.php");
   }
 
+  $id = $_SESSION['id'];
   require("connector.php");
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +23,12 @@
   <!-- CSS Files -->
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+  <style>
+    .grade-input{
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body class="">
@@ -176,7 +179,7 @@
                             echo "<td>".$row['firstname']." ".$row['lastname']."</td>";
                             echo "<input type='hidden' name='id' class='form-control' ";
                             echo "<div class='form-group text-center'>";
-                            echo "<td><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#viewGrades' value='". $row['user_id'] ."'>
+                            echo "<td><button class='btn btn-primary viewBtn' type='button' data-toggle='modal' data-target='#viewGrades' value='". $row['user_id'] ."'>
                                   View</button></td>";
                             echo "<tr>";
                           }
@@ -200,25 +203,25 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <th>Student Name</th>
-                        <th>2018-06-11</th>
-                        <th>2018-06-13</th>
+                        <th id="first_date">2018-06-11</th>
+                        <th id="second_date">2018-06-13</th>
                       </thead>
                       <tbody>
                         <tr>
                           <?php
                               echo "<tr>";
-                              //echo "<td>".$rows[0]." ".$rows[1]."</td>";
+                              echo "<td id='name'></td>";
                               echo "<td>";
-                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='col-md-5 pr-1'>";
                               echo "<div class='form-group'>";
-                              echo "<input type='text' class='form-control' value=''>";
+                              echo "<input id='first_grade' type='text' class='form-control grade-input' value=''>";
                               echo "</div>";
                               echo "</div>";
                               echo "</td>";
                               echo "<td>";
-                              echo "<div class='col-md-3 pr-1'>";
+                              echo "<div class='col-md-5 pr-1'>";
                               echo "<div class='form-group'>";
-                              echo "<input type='text' class='form-control' value=''>";
+                              echo "<input id='second_grade' type='text' class='form-control grade-input' value=''>";
                               echo "</div>";
                               echo "</div>";
                               echo "</td>";
@@ -252,5 +255,44 @@
 
   </script>
 </body>
-
 </html>
+<script src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".viewBtn").click(function(){
+      var student_id = $(this).attr('value');
+      console.log(student_id);
+      $.ajax({
+        type: "POST",
+        url: "getGrades.php",
+        data: {student_id: student_id, subject_id: 3, order: "ASC"}, // replace with actual subject id (dynamically)
+        dataType: "json",
+        success: function(data){
+          console.log(data);
+          $("#name").html(data["firstname"] + ' ' + data["lastname"]);
+          $("#first_date").html(data["date_of_plan"]); // change to date
+          $("#first_grade").val(data["grade"]);
+        },
+        error: function(){
+          console.log("error");
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "getGrades.php",
+        data: {student_id: student_id, subject_id: 3, order: "DESC"}, // replace with actual subject id (dynamically)
+        dataType: "json",
+        success: function(data){
+          console.log(data);
+          $("#second_date").html(data["date_of_plan"]); // change to date
+          $("#second_grade").val(data["grade"]);
+        },
+        error: function(){
+          console.log("error");
+        }
+      });
+    });
+  });
+
+
+</script>
