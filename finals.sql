@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 04:28 PM
+-- Generation Time: Jul 08, 2018 at 04:39 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,8 +42,6 @@ CREATE TABLE `activity` (
 
 INSERT INTO `activity` (`activity_id`, `plan_id`, `grade`, `student_id`, `grade_id`) VALUES
 (1, 1, 9.99, 15100106, 1),
-(2, 1, 0.00, 15100107, 2),
-(3, 1, 1.50, 15100108, 3),
 (4, 1, 1.30, 15100106, 1);
 
 -- --------------------------------------------------------
