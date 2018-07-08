@@ -1,25 +1,13 @@
 <?php
-session_start();
+  session_start();
 
-$id = $_SESSION['id'];
+  $id = $_SESSION['id'];
 
-if(!isset($_SESSION['id'])){
-    header("location:index.php");
-}
+  if(!isset($_SESSION['id'])){
+      header("location:index.php");
+  }
 
-require("connector.php");
-
-$qry = mysqli_query($sql, "SELECT course_name
-FROM user
-JOIN teacher
-ON user.user_id = teacher.teacher_id
-JOIN subject
-ON teacher.subject_id = subject.subject_id
-WHERE user.user_id =".$id);
-
-$records = mysqli_query($sql, "SELECT firstname, lastname FROM user WHERE type='student'");
-$rows = mysqli_fetch_row($records);
-
+  require("connector.php");
 ?>
 
 
@@ -161,11 +149,7 @@ $rows = mysqli_fetch_row($records);
               <div class="card-header">
                 <h4 class="card-title">
                     <b>
-                      <?php
-                        while ($row = mysqli_fetch_array($qry)) {
-                          echo $row[0];
-                        }
-                      ?>
+                      Testing
                     </b>
                     <br>
                     <small>School Year 2017 - 2018 </small>
@@ -186,12 +170,13 @@ $rows = mysqli_fetch_row($records);
                     <tbody>
                       <tr>
                         <?php
+                          $records = mysqli_query($sql, "SELECT user_id, firstname, lastname FROM user WHERE type='student'");
                           while($row = mysqli_fetch_assoc($records)){
                             echo "<tr>";
                             echo "<td>".$row['firstname']." ".$row['lastname']."</td>";
-                            echo "<input type='hidden' name='id' class='form-control' value=<?php echo $rows[0]?>";
+                            echo "<input type='hidden' name='id' class='form-control' ";
                             echo "<div class='form-group text-center'>";
-                            echo "<td><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#viewGrades'>
+                            echo "<td><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#viewGrades' value='". $row['user_id'] ."'>
                                   View</button></td>";
                             echo "<tr>";
                           }
@@ -222,7 +207,7 @@ $rows = mysqli_fetch_row($records);
                         <tr>
                           <?php
                               echo "<tr>";
-                              echo "<td>".$rows[0]." ".$rows[1]."</td>";
+                              //echo "<td>".$rows[0]." ".$rows[1]."</td>";
                               echo "<td>";
                               echo "<div class='col-md-3 pr-1'>";
                               echo "<div class='form-group'>";
