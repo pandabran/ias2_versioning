@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 07:18 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Jul 08, 2018 at 07:48 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `finals`
+-- Database: `ren`
 --
 
 -- --------------------------------------------------------
@@ -292,31 +292,31 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `type`, `filename`, `town`, `city`, `country`, `zipcode`, `email`, `password`) VALUES
-(15100101, 'Devorah', 'Narvaez', 'teacher', '', 'Talamban', 'Cebu', 'Philippines', 6000, 'devorahnarvaez@gmail.com', 'devqui123'),
-(15100102, 'Krizia', 'Lumapas', 'teacher', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, 'krizialumapas@gmail.com', 'krilum123'),
-(15100103, 'Jane', 'Manguiran', 'teacher', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, 'janemanguiran@gmail.com', 'janman123'),
-(15100104, 'Abigail', 'Semilla', 'teacher', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'abigailsemilla@gmail.com', 'abisem123'),
-(15100105, 'Benedict', 'Sanchez', 'coordinator', '', 'Cebu', 'Cebu', 'Philippines', 6000, 'benedictsanchez@gmail.com', 'bensan123'),
-(15100106, 'Russel', 'Morquecho', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100107, 'Malcolm', 'Cada', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100108, 'Patty', 'Krasner', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100109, 'Celestina', 'Herbst', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100110, 'Rufus', 'Benham', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100111, 'Nestor', 'Buresh', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100112, 'Yolande', 'Lant', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100113, 'Peg', 'Girton', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100114, 'Leigh', 'Piekarski', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100115, 'Christopher', 'Poll', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100116, 'Drema', 'Vanscyoc', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100117, 'Gaylene', 'Durant', 'student', '', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
-(15100118, 'Krysten', 'Cranmer', 'student', '', 'Mandaue', 'Cebu', 'Philippines', 6000, '', ''),
-(15100119, 'Marshall', 'Tittle', 'student', '', 'Minganilla', 'Minganilla', 'Philippines', 6000, '', ''),
-(15100120, 'Keesha', 'Bomar', 'student', '', 'Pit-os', 'Cebu', 'Philippines', 6000, '', ''),
-(15100121, 'Lester', 'Hopwood', 'student', '', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100122, 'Lynette', 'Hornback', 'student', '', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
-(15100123, 'Angelo', 'Ritch', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
-(15100124, 'Margeret', 'Lugo', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
-(15100125, 'Lara', 'Ahmad', 'student', '', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100101, 'Devorah', 'Narvaez', 'teacher', '1.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, 'devorahnarvaez@gmail.com', 'devqui123'),
+(15100102, 'Krizia', 'Lumapas', 'teacher', '2.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, 'krizialumapas@gmail.com', 'krilum123'),
+(15100103, 'Jane', 'Manguiran', 'teacher', '3.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, 'janemanguiran@gmail.com', 'janman123'),
+(15100104, 'Abigail', 'Semilla', 'teacher', '4.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, 'abigailsemilla@gmail.com', 'abisem123'),
+(15100105, 'Benedict', 'Sanchez', 'coordinator', '5.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, 'benedictsanchez@gmail.com', 'bensan123'),
+(15100106, 'Russel', 'Morquecho', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100107, 'Malcolm', 'Cada', 'student', 'profile.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100108, 'Patty', 'Krasner', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100109, 'Celestina', 'Herbst', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100110, 'Rufus', 'Benham', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100111, 'Nestor', 'Buresh', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100112, 'Yolande', 'Lant', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100113, 'Peg', 'Girton', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100114, 'Leigh', 'Piekarski', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100115, 'Christopher', 'Poll', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100116, 'Drema', 'Vanscyoc', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100117, 'Gaylene', 'Durant', 'student', 'profile.jpg', 'Lilo-an', 'Cebu', 'Philippines', 6000, '', ''),
+(15100118, 'Krysten', 'Cranmer', 'student', 'profile.jpg', 'Mandaue', 'Cebu', 'Philippines', 6000, '', ''),
+(15100119, 'Marshall', 'Tittle', 'student', 'profile.jpg', 'Minganilla', 'Minganilla', 'Philippines', 6000, '', ''),
+(15100120, 'Keesha', 'Bomar', 'student', 'profile.jpg', 'Pit-os', 'Cebu', 'Philippines', 6000, '', ''),
+(15100121, 'Lester', 'Hopwood', 'student', 'profile.jpg', 'Cebu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100122, 'Lynette', 'Hornback', 'student', 'profile.jpg', 'Lapu-lapu', 'Cebu', 'Philippines', 6000, '', ''),
+(15100123, 'Angelo', 'Ritch', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100124, 'Margeret', 'Lugo', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
+(15100125, 'Lara', 'Ahmad', 'student', 'profile.jpg', 'Talamban', 'Cebu', 'Philippines', 6000, '', ''),
 (15100126, 'Taylor', 'Swift', 'student', '', 'somewhere', 'down', 'the road', 252352, 'taylorswift@gmail.com', '1234');
 
 -- --------------------------------------------------------
